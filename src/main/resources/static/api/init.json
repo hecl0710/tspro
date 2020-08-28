@@ -1,0 +1,151 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "page/main.html?t=1"
+  },
+  "logoInfo": {
+    "title": "启明星",
+    "image": "../static/images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "税源地管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "税源地管理",
+              "href": "page/tax-fund-manage.html",
+              "icon": "fa fa-map-marker",
+              "target": "_self"
+            },
+            {
+              "title": "税源企业管理",
+              "href": "page/tax-company.html",
+              "icon": "fa fa-bank",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "客户管理",
+          "href": "",
+          "icon": "fa fa-group",
+          "target": "_self",
+          "child": [
+            {
+              "title": "基本信息",
+              "href": "page/customer-info.html",
+              "icon": "fa fa-file-text",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "充值管理",
+          "href": "",
+          "icon": "fa fa-bank",
+          "target": "_self",
+          "child": [
+            {
+              "title": "充值管理",
+              "href": "page/invest.html",
+              "icon": "fa fa-flask",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "任务管理",
+          "href": "",
+          "icon": "fa fa-tasks",
+          "target": "_self",
+          "child": [
+            {
+              "title": "任务管理",
+              "href": "page/task.html",
+              "icon": "fa fa-jpy",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "结算管理",
+          "href": "",
+          "icon": "fa fa-calculator",
+          "target": "_self",
+          "child": [
+            {
+              "title": "结算打款",
+              "href": "page/distribute.html",
+              "icon": "fa fa-jpy",
+              "target": "_self"
+            },
+            {
+              "title": "结算查询",
+              "href": "page/distribute-query.html",
+              "icon": "fa fa-bar-chart",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "人员推荐",
+          "href": "",
+          "icon": "fa fa-user-plus",
+          "target": "_self",
+          "child": [
+            {
+              "title": "推荐发布",
+              "href": "page/user-recommend.html",
+              "icon": "fa fa-send",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "发票管理",
+          "href": "",
+          "icon": "fa fa-ticket",
+          "target": "_self",
+          "child": [
+            {
+              "title": "发票管理",
+              "href": "page/bill-manage.html",
+              "icon": "fa fa-money",
+              "target": "_self"
+            },
+            {
+              "title": "历史查询",
+              "href": "page/bill-query.html",
+              "icon": "fa fa-search",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "企业信息管理",
+          "href": "",
+          "icon": "fa fa-gear",
+          "target": "",
+          "child": [
+            {
+              "title": "信息维护",
+              "href": "page/customer-edit.html",
+              "icon": "fa fa-edit",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
