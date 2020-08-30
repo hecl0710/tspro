@@ -4,7 +4,31 @@
     <meta charset="UTF-8">
     <title>任务管理</title>
 </head>
-<body>
+<link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
+<link href="/static/css/public.css" media="all" rel="stylesheet">
+<script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
+<script src="/static/js/page/task.js"></script>
+<body class="layuimini-container">
+<div class="layuimini-main">
 
+    <fieldset class="table-search-fieldset">
+        <div style="margin: 10px 10px 10px 10px">
+            <h3>任务广场</h3>
+        </div>
+    </fieldset>
+
+    <script id="toolbarDemo" type="text/html">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">新建任务</button>
+        </div>
+    </script>
+
+    <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+    <script id="currentTableBar" type="text/html">
+        <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+    </script>
+</div>
 </body>
 </html>
