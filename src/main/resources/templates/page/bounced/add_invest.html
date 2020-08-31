@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta content="webkit" name="renderer">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
+    <link href="/static/css/public.css" media="all" rel="stylesheet">
+    <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
+    <script charset="utf-8" src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script charset="utf-8" src="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.js"></script>
+    <link href="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+
+        .layui-input, .layui-textarea {
+            display: block;
+            width: 85%;
+            padding-left: 10px;
+        }
+
+        .layui-textarea {
+            min-height: 30px;
+            height: auto;
+            line-height: 20px;
+            padding: 6px 10px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-form layuimini-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">充值公司</label>
+        <div class="layui-input-block">
+            <input class="layui-input" id="" lay-reqtext="充值公司不能为空" lay-verify="required" name="" type="text"
+                   value="">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">收款公司</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="" type="text" value="">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">充值金额</label>
+        <div class="layui-input-block">
+            <input class="layui-input" id=" " placeholder="元" type="text" value="">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">上传凭证</label>
+        <button class="layui-btn" id="test3" type="button"><i class="layui-icon"></i>上传文件</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    layui.use('upload', function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '#test3'
+            , url: 'https://httpbin.org/post' //改成您自己的上传接口
+            , accept: 'file' //普通文件
+            , done: function (res) {
+                layer.msg('上传成功');
+                console.log(res);
+            }
+        });
+    })
+</script>
+</body>
+</html>
