@@ -97,54 +97,6 @@
 <!--    ©版权所有 2014-2018 叁贰柒工作室<span class="padding-5">|</span><a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备16006642号-2</a>-->
 <!--</div>-->
 <script src="../../static/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
-<script>
-    layui.use(['form','jquery'], function () {
-        var $ = layui.jquery,
-            form = layui.form,
-            layer = layui.layer;
-
-        // 登录过期的时候，跳出ifram框架
-        if (top.location != self.location) top.location = self.location;
-
-        $('.bind-password').on('click', function () {
-            if ($(this).hasClass('icon-5')) {
-                $(this).removeClass('icon-5');
-                $("input[name='password']").attr('type', 'password');
-            } else {
-                $(this).addClass('icon-5');
-                $("input[name='password']").attr('type', 'text');
-            }
-        });
-
-        $('.icon-nocheck').on('click', function () {
-            if ($(this).hasClass('icon-check')) {
-                $(this).removeClass('icon-check');
-            } else {
-                $(this).addClass('icon-check');
-            }
-        });
-
-        // 进行登录操作
-        form.on('submit(login)', function (data) {
-            data = data.field;
-            if (data.username == '') {
-                layer.msg('用户名不能为空');
-                return false;
-            }
-            if (data.password == '') {
-                layer.msg('密码不能为空');
-                return false;
-            }
-            if (data.captcha == '') {
-                layer.msg('验证码不能为空');
-                return false;
-            }
-            layer.msg('登录成功', function () {
-                window.location = '../index.html';
-            });
-            return false;
-        });
-    });
-</script>
+<script src="../../static/js/login.js" charset="utf-8"></script>
 </body>
 </html>
