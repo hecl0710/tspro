@@ -1,0 +1,41 @@
+server:
+  port: 10010
+
+spring:
+  mvc:
+    view:
+      suffix: .html
+
+datasource:
+  url: jdbc:oracle:thin:@10.48.1.253:1521:ora11g
+  driverClassName: oracle.jdbc.OracleDriver
+  username: zjallinpaytest
+  password: zjallinpaytest
+  #初始化连接数
+  initialSize: 5
+  #最大连接数
+  maxActive: 200
+  #获取连接最大等待时间
+  maxWait: 60000
+  #PSCache，对ORACLE等游标支持类数据库性能提升明显，开启
+  #maxPoolPreparedStatementPerConnectionSize>0时自动开启
+  poolPreparedStatements: true
+  #配置每个connection独享的缓存大小
+  maxPoolPreparedStatementPerConnectionSize: 20
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 300000
+  validationQuery: SELECT 1 FROM DUAL
+  testWhileIdle: true
+  #以下两个配置会在数据库断开和连接时进行validationQuery验证，影响性能，关闭。
+  testOnBorrow: false
+  testOnReturn: false
+  #监控拦截filter
+  filters: stat,slf4j,config
+
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.venus.tspro.entity
+logging:
+  classpath: log4j2.xml
+  level:
+    com.allinpay.h5pay.lcwy.dao: debug
