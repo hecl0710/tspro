@@ -5,8 +5,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.venus.tspro.dao.TaskDao">
 
-    <resultMap id="TaskInfoMap" type="com.venus.tspro.entity.manager.TaskInfoBack">
-        <result column="TASK_ID" property="taskId"/>
+    <resultMap id="taskInfoResultMap" type="com.venus.tspro.entity.manager.TaskInfo">
+        <id column="TASK_ID" property="taskId"/>
         <result column="CUST_ID" property="custId"/>
         <result column="TASK_NAME" property="taskName"/>
         <result column="TASK_DETAIL" property="taskDetail"/>
@@ -19,9 +19,8 @@
         <result column="CREATE_TIME" property="createTime"/>
         <result column="UPDATE_TIME" property="updateTime"/>
     </resultMap>
-    <select id="getTastData" resultMap="TaskInfoMap">
-            select *
-            from T_TASK_INFO t
+    <select id="getTaskData" resultMap="taskInfoResultMap">
+            SELECT * FROM T_TASK_INFO T
     </select>
 
 </mapper>

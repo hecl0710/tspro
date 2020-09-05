@@ -1,11 +1,11 @@
 package com.venus.tspro.entity;
 
 import com.venus.tspro.global.BaseEntity;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class TaskInfo extends BaseEntity {
     /**
      * 任务编号
