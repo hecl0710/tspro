@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.venus.tspro.dao.sys")
+@MapperScan("com.venus.tspro.dao")
 public class TsproApplication {
 
     public static void main(String[] args) {

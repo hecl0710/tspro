@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.venus.tspro.dao.TaskDao">
+
+    <resultMap id="TaskInfoMap" type="com.venus.tspro.entity.manager.TaskInfoBack">
+        <result column="TASK_ID" property="taskId"/>
+        <result column="CUST_ID" property="custId"/>
+        <result column="TASK_NAME" property="taskName"/>
+        <result column="TASK_DETAIL" property="taskDetail"/>
+        <result column="STATUS" property="status"/>
+        <result column="AMOUNT" property="amount"/>
+        <result column="TAX_FEE" property="taxFee"/>
+        <result column="FEE" property="fee"/>
+        <result column="BILL_STATUS" property="billStatus"/>
+        <result column="DELIVERY_STATUS" property="deliveryStatus"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+    </resultMap>
+    <select id="getTastData" resultMap="TaskInfoMap">
+            select *
+            from T_TASK_INFO t
+    </select>
+
+</mapper>

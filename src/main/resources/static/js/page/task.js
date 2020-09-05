@@ -3,27 +3,52 @@ layui.use(['form', 'table'], function () {
         form = layui.form,
         table = layui.table;
 
-    table.render({
-        elem: '#currentTableId',
-        url: '../api/table.json',
-        toolbar: '#toolbarDemo',
-        defaultToolbar: [],
-        cols: [[
-            {field: 'id', title: '任务名称'},
-            {field: 'username', title: '任务内容'},
-            {field: 'sex', title: '服务公司'},
-            {field: 'city', title: '任务状态'},
-            {field: 'sign', title: '发放金额',},
-            {field: 'experience', title: '综合税费'},
-            {field: 'score', title: '服务费'},
-            {field: 'classify', title: '创建时间', sort: true},
-            {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
-        ]],
-        limits: [10, 15, 20, 25, 50, 100],
-        limit: 15,
-        page: true,
-        skin: 'line'
-    });
+    var search = function () {
+        table.render({
+            elem: '#currentTableId',
+            url: '/task/list',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: [],
+            request: {
+                pageNumber: 'pageNumber',
+                pageSize: 'pageSize'
+            },
+            //处理返回参数
+            parseData: function (res) {
+                return {
+                    "code": res.code,
+                    "msg": res.msg,
+                    "count": res.data.total,
+                    "data": res.data.list
+                };
+            },
+            //设置返回的属性值，依据此值进行解析
+            response: {
+                statusName: 'code',
+                statusCode: "00000",
+                msgName: 'msg',
+                dataName: 'data'
+            },
+            cols: [[
+                {field: 'taskName', title: '任务名称'},
+                {field: 'taskDetail', title: '任务内容'},
+                // {field: 'sex', title: '服务公司'},
+                {field: 'status', title: '任务状态'},
+                {field: 'amount', title: '发放金额',},
+                {field: 'taxFee', title: '综合税费'},
+                {field: 'fee', title: '服务费'},
+                {field: 'createTime', title: '创建时间', sort: true},
+                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            skin: 'line'
+        });
+    }
+
+    //页面加载就查询列表
+    search();
 
 
     /**
