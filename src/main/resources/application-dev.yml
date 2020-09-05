@@ -28,8 +28,8 @@ spring:
 
 
 mybatis:
-  mapper-locations: classpath:/mappers/*/*.xml
-  type-aliases-package: com.venus.tspro.entity.sys
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.venus.tspro.entity
 logging:
   classpath: log4j2.xml
   level:

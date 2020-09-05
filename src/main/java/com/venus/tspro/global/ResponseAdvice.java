@@ -24,8 +24,10 @@ public class ResponseAdvice  implements ResponseBodyAdvice {
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType,
                                   Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-        if(Objects.isNull(o))
-            return ResponseBuilder.buildSuccessResponse();
+//        if(Objects.isNull(o))
+//            return ResponseBuilder.buildSuccessResponse();
+        if(o instanceof ResponseData)
+            return o;
         return ResponseBuilder.buildSuccessResponse(o);
     }
 
