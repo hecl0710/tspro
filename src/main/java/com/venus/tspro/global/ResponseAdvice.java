@@ -24,21 +24,21 @@ public class ResponseAdvice  implements ResponseBodyAdvice {
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType,
                                   Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-//        if(Objects.isNull(o))
-//            return ResponseBuilder.buildSuccessResponse();
         if(o instanceof ResponseData)
             return o;
+        if(Objects.isNull(o))
+            return ResponseBuilder.buildSuccessResponse();
         return ResponseBuilder.buildSuccessResponse(o);
     }
 
     @ExceptionHandler(BizException.class)
-    public ResponseData bizExceptionHandle(BizException bizException){
+    public BaseResponse bizExceptionHandle(BizException bizException){
         log.error("业务处理异常->{}:{}",bizException.getCode(),bizException.getMsg(),bizException);
         return ResponseBuilder.buildFailResponse(bizException.getCode(),bizException.getMsg());
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseData exceptionHandle(Exception exception){
+    public BaseResponse exceptionHandle(Exception exception){
         log.error("系统处理异常：", exception);
         return ResponseBuilder.buildFailResponse(ResponseEnum.UNKNOWN_ERROR.getCode(),ResponseEnum.UNKNOWN_ERROR.getMsg());
     }
