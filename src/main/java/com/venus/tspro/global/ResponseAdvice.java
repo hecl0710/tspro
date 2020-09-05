@@ -2,6 +2,7 @@ package com.venus.tspro.global;
 
 import com.venus.tspro.enums.ResponseEnum;
 import com.venus.tspro.exception.BizException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import java.util.Objects;
 
 @RestControllerAdvice(basePackages = "com.venus.tspro")
+@Slf4j
 public class ResponseAdvice  implements ResponseBodyAdvice {
     @Override
     public boolean supports(MethodParameter methodParameter, Class aClass) {
@@ -29,11 +31,13 @@ public class ResponseAdvice  implements ResponseBodyAdvice {
 
     @ExceptionHandler(BizException.class)
     public ResponseData bizExceptionHandle(BizException bizException){
+        log.error("业务处理异常->{}:{}",bizException.getCode(),bizException.getMsg(),bizException);
         return ResponseBuilder.buildFailResponse(bizException.getCode(),bizException.getMsg());
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseData exceptionHanle(Exception exception){
+    public ResponseData exceptionHandle(Exception exception){
+        log.error("系统处理异常：", exception);
         return ResponseBuilder.buildFailResponse(ResponseEnum.UNKNOWN_ERROR.getCode(),ResponseEnum.UNKNOWN_ERROR.getMsg());
     }
 }
