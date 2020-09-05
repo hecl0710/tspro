@@ -3,16 +3,11 @@ package com.venus.tspro.utils;
 
 import com.github.pagehelper.PageInfo;
 import com.venus.tspro.global.PageVO;
-import org.springframework.stereotype.Component;
 
 /**
  * 分页查询结果对象转换工具类
  */
-@Component
 public class PageVOUtil {
-
-    private PageVOUtil() {
-    }
 
     /**
      * 将pageInfo中的分页信息转换到PageVO中
