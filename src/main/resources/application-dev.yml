@@ -5,9 +5,8 @@ spring:
   mvc:
     view:
       suffix: .html
-
-  username: zjallinpaytest
-  password: zjallinpaytest
+  thymeleaf:
+    cache: false
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -27,10 +26,11 @@ spring:
       filter: stat,slf4j,config
       test-on-return: false
 
+
 mybatis:
-  mapper-locations: classpath:/mappers/*.xml
-  type-aliases-package: com.venus.tspro.entity
+  mapper-locations: classpath:/mappers/*/*.xml
+  type-aliases-package: com.venus.tspro.entity.sys
 logging:
   classpath: log4j2.xml
   level:
-    com.venus.tspro.dao: debug
+    com.venus.tspro.dao.sys: debug

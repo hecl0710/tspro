@@ -27,7 +27,7 @@ layui.use(['form','jquery'], function () {
     // 进行登录操作
     form.on('submit(login)', function (data) {
         data = data.field;
-        if (data.username == '') {
+        if (data.userName == '') {
             layer.msg('用户名不能为空');
             return false;
         }
@@ -39,9 +39,16 @@ layui.use(['form','jquery'], function () {
             layer.msg('验证码不能为空');
             return false;
         }
+
         layer.msg('登录成功', function () {
             window.location = '../index.html';
         });
+        // $.ajax({
+        //     type:"post",
+        //     url:"/index",
+        //     contentType :'application/json',
+        //     data:JSON.stringify(data)
+        // });
         return false;
     });
 });

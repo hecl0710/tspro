@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.venus.tspro.dao.sys.SysUserDao">
+
+    <resultMap id="sysUserResultMap" type="SysUser">
+        <id property="userId" column="USER_ID"></id>
+        <result property="userName" column="USER_NAME"></result>
+        <result property="password" column="PASSWORD"></result>
+        <result property="status" column="STATUS"></result>
+        <result property="optUser" column="OPT_USER"></result>
+    </resultMap>
+
+    <select id="querySysUser" parameterType="SysUser" resultMap="sysUserResultMap">
+        SELECT * FROM T_SYS_USER T
+        <where>
+            <if test="userId!=null and userId!=''">
+                T.USER_ID = #{userId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                AND T.USER_NAME = #{userName}
+            </if>
+        </where>
+    </select>
+
 </mapper>
