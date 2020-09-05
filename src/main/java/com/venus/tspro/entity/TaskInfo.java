@@ -1,6 +1,6 @@
 package com.venus.tspro.entity;
 
-import com.venus.tspro.common.BaseEntity;
+import com.venus.tspro.global.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 

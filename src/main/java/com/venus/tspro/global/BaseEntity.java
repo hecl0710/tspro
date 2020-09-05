@@ -1,4 +1,4 @@
-package com.venus.tspro.common;
+package com.venus.tspro.global;
 
 import lombok.Data;
 import lombok.Getter;

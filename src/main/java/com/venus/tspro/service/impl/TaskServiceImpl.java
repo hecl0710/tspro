@@ -1,7 +1,7 @@
 package com.venus.tspro.service.impl;
 
 import com.github.pagehelper.PageInfo;
-import com.venus.tspro.common.PageVO;
+import com.venus.tspro.global.PageVO;
 import com.venus.tspro.dao.TaskDao;
 import com.venus.tspro.entity.TaskInfo;
 import com.venus.tspro.service.TaskService;

@@ -1,6 +1,6 @@
 package com.venus.tspro.controller;
 
-import com.venus.tspro.common.PageVO;
+import com.venus.tspro.global.PageVO;
 import com.venus.tspro.entity.TaskInfo;
 import com.venus.tspro.service.TaskService;
 import org.springframework.stereotype.Controller;

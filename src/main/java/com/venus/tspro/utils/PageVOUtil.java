@@ -2,7 +2,7 @@ package com.venus.tspro.utils;
 
 
 import com.github.pagehelper.PageInfo;
-import com.venus.tspro.common.PageVO;
+import com.venus.tspro.global.PageVO;
 import org.springframework.stereotype.Component;
 
 /**
