@@ -1,10 +1,9 @@
 package com.venus.tspro.dao;
 
-import com.venus.tspro.entity.manager.TaskInfoBack;
-import com.venus.tspro.entity.manager.vo.TaskInfoVo;
+import com.venus.tspro.entity.TaskInfo;
 
 import java.util.List;
 
 public interface TaskDao {
-     List<TaskInfoBack> getTastData(TaskInfoVo taskInfoReq);
+     List<TaskInfo> getTastData(TaskInfo taskInfoReq);
 }

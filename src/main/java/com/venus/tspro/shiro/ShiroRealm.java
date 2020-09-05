@@ -1,17 +1,7 @@
 package com.venus.tspro.shiro;
 
-import com.venus.tspro.entity.sys.SysPermission;
-import com.venus.tspro.entity.sys.SysUser;
-import com.venus.tspro.service.sys.SysUserService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authc.*;
-import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 
 @Repository
 @Slf4j

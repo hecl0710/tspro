@@ -1,4 +1,4 @@
-package com.venus.tspro.entity.sys;
+package com.venus.tspro.entity;
 
 import lombok.Data;
 

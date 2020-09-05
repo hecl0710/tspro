@@ -1,6 +1,6 @@
 package com.venus.tspro.controller;
 
-import com.venus.tspro.entity.sys.SysUser;
+import com.venus.tspro.entity.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

@@ -1,12 +1,12 @@
-package com.venus.tspro.entity.manager;
+package com.venus.tspro.entity;
 
+import com.venus.tspro.common.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class TaskInfoBack {
-
+public class TaskInfo extends BaseEntity {
     /**
      * 任务编号
      */
@@ -55,5 +55,4 @@ public class TaskInfoBack {
      * 更新时间
      */
     private String updateTme;
-
 }

@@ -1,6 +1,6 @@
-package com.venus.tspro.service.sys;
+package com.venus.tspro.service;
 
-import com.venus.tspro.entity.sys.SysUser;
+import com.venus.tspro.entity.SysUser;
 
 public interface SysUserService {
 
