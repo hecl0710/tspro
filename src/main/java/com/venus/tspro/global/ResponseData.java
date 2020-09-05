@@ -3,17 +3,10 @@ package com.venus.tspro.global;
 import lombok.Data;
 
 @Data
-public class ResponseData<T> {
-    String code;
-    String msg;
+public class ResponseData<T> extends BaseResponse{
     T data;
-    public ResponseData(String code, String msg){
-        this.code = code;
-        this.msg = msg;
-    }
     public ResponseData(String code, String msg, T data){
-        this.code = code;
-        this.msg = msg;
+        super(code,msg);
         this.data = data;
     }
 }
