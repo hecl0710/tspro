@@ -1,11 +1,11 @@
 package com.venus.tspro.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.venus.tspro.dao.TaskDao;
 import com.venus.tspro.entity.TaskInfo;
 import com.venus.tspro.global.PageVO;
 import com.venus.tspro.service.TaskService;
-import com.venus.tspro.utils.DateUtil;
 import com.venus.tspro.utils.PageVOUtil;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +25,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public PageVO<TaskInfo> getTaskData(TaskInfo taskInfo) {
+        PageHelper.startPage(taskInfo.getPageNumber(), taskInfo.getPageSize());
         List<TaskInfo> taskInfoReqs = taskDao.getTaskData(taskInfo);
         PageVO<TaskInfo> pageVO = PageVOUtil.convert(new PageInfo<>(taskInfoReqs));
         return pageVO;

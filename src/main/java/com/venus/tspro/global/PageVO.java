@@ -13,7 +13,7 @@ public class PageVO<T> {
     /**
      * 页码
      */
-    private Integer pageNum;
+    private Integer pageNumber;
 
     /**
      * 每页数量

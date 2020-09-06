@@ -9,8 +9,9 @@ layui.use(['form', 'table'], function () {
             url: '/task/list',
             toolbar: '#toolbarDemo',
             defaultToolbar: [],
+            page: true,//是否分页
             request: {
-                pageNumber: 'pageNumber',
+                pageName: 'pageNumber',
                 limitName: 'pageSize'
             },
             //处理返回参数
@@ -42,23 +43,8 @@ layui.use(['form', 'table'], function () {
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
-            limit: 15,
-            page: true,//是否分页
+            limit: 10,
             done: function (res, curr, count) {
-                $("[data-field='companyName']").children().each(function (i) {
-                    var index = parseInt(i)-1;
-                    if( index >= 0){
-                        var companyName = res.data[index].tsPlatforms[0].companyName;//服务商
-                        $(this).text(companyName)
-                    }
-                });
-                $("[data-field='companyBusiness']").children().each(function (i) {
-                    var index = parseInt(i)-1;
-                    if( index >= 0){
-                        var companyBusiness = res.data[index].customerInfoBacks[0].companyBusiness;//公司业务
-                        $(this).text(companyBusiness)
-                    }
-                });
                 $("[data-field='status']").children().each(function () {
                     if ($(this).text() == '1') {
                         $(this).text("发送完成")
@@ -144,10 +130,10 @@ layui.use(['form', 'table'], function () {
 
     function setChildVlue(index){
         var contentValue = layui.table.cache.currentTableId;
-        var custName = contentValue[0].customerInfoBacks[0].custName;
-        var companyBusiness = contentValue[0].customerInfoBacks[0].companyBusiness;
-        var companyName = contentValue[0].tsPlatforms[0].companyName;//税源地名称
-        var custId = contentValue[0].customerInfoBacks[0].custId;
+        var custName = contentValue[0].custName;
+        var companyBusiness = contentValue[0].companyBusiness;
+        var companyName = contentValue[0].companyName;//税源地名称
+        var custId = contentValue[0].custId;
         var addTaskBody = parent.layer.getChildFrame('body', index);
         addTaskBody.find("#custName").val(custName);
         addTaskBody.find("#companyBusiness").val(companyBusiness);

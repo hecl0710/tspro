@@ -14,7 +14,7 @@ public class PageVOUtil {
      */
     public static <K> PageVO<K> convert(PageInfo<K> pageInfo) {
         PageVO<K> pageVO = new PageVO<K>();
-        pageVO.setPageNum(pageInfo.getPageNum());
+        pageVO.setPageNumber(pageInfo.getPageNum());
         pageVO.setPageSize(pageInfo.getPageSize());
         pageVO.setSize(pageInfo.getSize());
         pageVO.setTotal(pageInfo.getTotal());

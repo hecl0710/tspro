@@ -2,10 +2,6 @@ package com.venus.tspro.entity;
 
 import com.venus.tspro.global.BaseEntity;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.List;
 
 /**
  *  任务信息实体类
@@ -65,13 +61,21 @@ public class TaskInfo extends BaseEntity{
      * 更新时间
      */
     private String updateTime;
-    /**
-     * 客户信息
-     */
-    private List<CustomerInfo> customerInfoBacks;
 
     /**
-     *  税源地公司信息
+     * 客户名称
      */
-    private List<TsPlatform> tsPlatforms;
+    private String custName;
+    /**
+     * 公司业务
+     */
+    private String companyBusiness;
+    /**
+     * 公司id
+     */
+    private String companyId;
+    /**
+     * 税源地企业名称
+     */
+    private String companyName;
 }

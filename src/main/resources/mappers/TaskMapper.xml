@@ -19,18 +19,13 @@
         <result column="DELIVERY_STATUS" property="deliveryStatus"/>
         <result column="CREATE_TIME" property="createTime"/>
         <result column="UPDATE_TIME" property="updateTime"/>
-        <collection property="customerInfoBacks" ofType="com.venus.tspro.entity.CustomerInfo">
-            <id column="CUST_ID" property="custId"/>
-            <result column="CUST_NAME" property="custName"/>
-            <result column="COMPANY_BUSINESS" property="companyBusiness"/>
-        </collection>
-        <collection property="tsPlatforms" ofType="com.venus.tspro.entity.TsPlatform">
-            <id column="COMPANY_ID" property="companyId"/>
-            <result column="COMPANY_NAME" property="companyName"/>
-        </collection>
+        <result column="CUST_NAME" property="custName"/>
+        <result column="COMPANY_BUSINESS" property="companyBusiness"/>
+        <result column="COMPANY_ID" property="companyId"/>
+        <result column="COMPANY_NAME" property="companyName"/>
     </resultMap>
     <select id="getTaskData" parameterType="TaskInfo" resultMap="taskInfoResultMap">
-        SELECT taskinfo.*,custinfo.cust_id,custinfo.cust_name,custinfo.company_business,
+        SELECT taskinfo.*,custinfo.cust_name,custinfo.company_business,
          tsPlatformInfo.company_id,tsPlatformInfo.company_name
         FROM T_TASK_INFO taskinfo
         LEFT JOIN T_CUSTOMER_INFO custinfo ON taskinfo.cust_id = custinfo.cust_id
