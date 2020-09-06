@@ -22,6 +22,6 @@ public class TaskController {
     @RequestMapping("list")
     @ResponseBody
     public PageVO<TaskInfo> getTastData(TaskInfo taskInfo) {
-        return taskService.getTastData(taskInfo);
+        return taskService.getTaskData(taskInfo);
     }
 }

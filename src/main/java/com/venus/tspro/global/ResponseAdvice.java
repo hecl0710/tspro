@@ -1,5 +1,6 @@
 package com.venus.tspro.global;
 
+import com.alibaba.fastjson.JSON;
 import com.venus.tspro.enums.ResponseEnum;
 import com.venus.tspro.exception.BizException;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,8 @@ public class ResponseAdvice  implements ResponseBodyAdvice {
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType,
                                   Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-        if(o instanceof ResponseData)
+        log.info("待响应：{}",JSON.toJSONString(o));
+        if(o instanceof BaseResponse)
             return o;
         if(Objects.isNull(o))
             return ResponseBuilder.buildSuccessResponse();

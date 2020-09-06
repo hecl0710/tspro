@@ -18,7 +18,7 @@ public class TaskServiceImpl implements TaskService {
     TaskDao taskDao;
 
     @Override
-    public PageVO<TaskInfo> getTastData(TaskInfo taskInfoReq) {
+    public PageVO<TaskInfo> getTaskData(TaskInfo taskInfoReq) {
         List<TaskInfo> taskInfoReqs = taskDao.getTaskData(taskInfoReq);
         PageVO<TaskInfo> pageVO = PageVOUtil.convert(new PageInfo<>(taskInfoReqs));
         return pageVO;

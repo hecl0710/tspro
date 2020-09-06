@@ -33,4 +33,4 @@ mybatis:
 logging:
   classpath: log4j2.xml
   level:
-    com.venus.tspro.dao.sys: debug
+    com.venus.tspro.dao: debug

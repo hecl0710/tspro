@@ -12,35 +12,19 @@
     <div></div>
 </div>
 
+<script id="tsf-toolbar" type="text/html">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">新建税源</button>
+    </div>
+</script>
 
 <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
     <legend>税源地管理</legend>
-    <div><button type="button" class="layui-btn layui-btn-normal">添加税源地</button></div>
-    <table class="layui-table" lay-even="" lay-skin="row">
-        <colgroup>
-            <col>100</col>
-        </colgroup>
-        <thead>
-        <tr>
-            <th>税源地编码</th>
-            <th>税源地名称</th>
-            <th>增值税</th>
-            <th>城建税</th>
-            <th>教育附加税</th>
-            <th>个人所得税</th>
-            <th>增值税地方留存</th>
-            <th>增值税返还</th>
-            <th>个税地方留存</th>
-            <th>个税返还</th>
-            <th>个税免征额</th>
-            <th>状态</th>
-            <th>创建时间</th>
-            <th>更新时间</th>
-            <th>最后更新操作人</th>
-        </tr>
-        </thead>
-    </table>
+    <table id="tsf-table"></table>
 </fieldset>
 
+
+
 </body>
+<script src="../../static/js/page/tax-fund-manage.js?v=1.0.3" charset="UTF-8"></script>
 </html>
