@@ -5,8 +5,13 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
+/**
+ *  任务信息实体类
+ */
 @Data
-public class TaskInfo extends BaseEntity {
+public class TaskInfo extends BaseEntity{
     /**
      * 任务编号
      */
@@ -23,6 +28,11 @@ public class TaskInfo extends BaseEntity {
      * 任务详情
      */
     private String taskDetail;
+
+    /**
+     * 人员技能
+     */
+    private String staffSkills;
     /**
      * 发送状态，1，发放完成，2，待发放，3，部分发放失败，4，已取消。
      */
@@ -55,4 +65,13 @@ public class TaskInfo extends BaseEntity {
      * 更新时间
      */
     private String updateTime;
+    /**
+     * 客户信息
+     */
+    private List<CustomerInfo> customerInfoBacks;
+
+    /**
+     *  税源地公司信息
+     */
+    private List<TsPlatform> tsPlatforms;
 }

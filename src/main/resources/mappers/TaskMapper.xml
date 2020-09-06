@@ -5,6 +5,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.venus.tspro.dao.TaskDao">
 
+   <!-- 查询任务信息-->
     <resultMap id="taskInfoResultMap" type="com.venus.tspro.entity.TaskInfo">
         <id column="TASK_ID" property="taskId"/>
         <result column="CUST_ID" property="custId"/>
@@ -18,9 +19,28 @@
         <result column="DELIVERY_STATUS" property="deliveryStatus"/>
         <result column="CREATE_TIME" property="createTime"/>
         <result column="UPDATE_TIME" property="updateTime"/>
+        <collection property="customerInfoBacks" ofType="com.venus.tspro.entity.CustomerInfo">
+            <id column="CUST_ID" property="custId"/>
+            <result column="CUST_NAME" property="custName"/>
+            <result column="COMPANY_BUSINESS" property="companyBusiness"/>
+        </collection>
+        <collection property="tsPlatforms" ofType="com.venus.tspro.entity.TsPlatform">
+            <id column="COMPANY_ID" property="companyId"/>
+            <result column="COMPANY_NAME" property="companyName"/>
+        </collection>
     </resultMap>
     <select id="getTaskData" parameterType="TaskInfo" resultMap="taskInfoResultMap">
-            SELECT * FROM T_TASK_INFO T
+        SELECT taskinfo.*,custinfo.cust_id,custinfo.cust_name,custinfo.company_business,
+         tsPlatformInfo.company_id,tsPlatformInfo.company_name
+        FROM T_TASK_INFO taskinfo
+        LEFT JOIN T_CUSTOMER_INFO custinfo ON taskinfo.cust_id = custinfo.cust_id
+        LEFT JOIN T_REL_CUST_TS relCustinfo ON custinfo.cust_id = relCustinfo.Cust_Id
+        LEFT JOIN T_TS_PLATFORM_INFO tsPlatformInfo ON relCustinfo.ts_id = tsPlatformInfo.company_id
     </select>
+
+    <insert id="addTaskData" parameterType="TaskInfo">
+        INSERT INTO T_TASK_INFO (TASK_ID,CUST_ID,TASK_NAME,TASK_DETAIL,STATUS,AMOUNT,STAFF_SKILLS)
+        VALUES(#{taskId},#{custId},#{taskName},#{taskDetail},#{status},#{amount},#{staffSkills})
+    </insert>
 
 </mapper>

@@ -31,44 +31,54 @@
 </head>
 <body>
 <div class="layui-form layuimini-form">
+    <div>
+        <input id="custId" hidden="true">
+    </div>
     <div class="layui-form-item">
         <label class="layui-form-label">公司名称</label>
         <div class="layui-input-block">
-            <input class="layui-input" lay-reqtext="公司名称不能为空" lay-verify="required" name="companyname" type="text"
+            <input class="layui-input" style="background-color: #F5F5F5" lay-reqtext="公司名称不能为空" disabled="disabled" lay-verify="required" name="custName" id="custName" type="text"
                    value="">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">公司业务</label>
         <div class="layui-input-block">
-            <input class="layui-input" name="username" type="text" value="">
+            <input class="layui-input" style="background-color: #F5F5F5" disabled="disabled" name="companyBusiness" id="companyBusiness" type="text" value="">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">服务商</label>
         <div class="layui-input-block">
-            <input class="layui-input" id="" type="text" value="">
+            <input class="layui-input" style="background-color: #F5F5F5" disabled="disabled" id="companyName" type="text" value="">
         </div>
     </div>
-    <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label">任务名称</label>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">任务名称</label>
         <div class="layui-input-block">
-            <textarea class="layui-textarea" name="remark" placeholder="必填项目"></textarea>
+            <textarea class="layui-textarea"  lay-verify="required" lay-reqtext="任务名称不能为空"   name="taskName" id="taskName" placeholder="必填项目"></textarea>
             <tip>如：xx服务/开发外包，70字以内</tip>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">任务内容</label>
         <div class="layui-input-block">
-            <textarea class="layui-textarea" name="remark" placeholder="选填项目"></textarea>
+            <textarea class="layui-textarea" name="taskDetail" id="taskDetail" placeholder="选填项目"></textarea>
             <tip>任务内容必须为合同中列明的服务内容，70字以内</tip>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">人员技能</label>
         <div class="layui-input-block">
-            <textarea class="layui-textarea" name="remark" placeholder="选填项目"></textarea>
+            <textarea class="layui-textarea" name="staffSkills" id="staffSkills" placeholder="选填项目"></textarea>
             <tip>人员技能必须为合同中列明的服务内容，70字以内</tip>
+        </div>
+    </div>
+
+    <div class="layui-form-item" style="display: none">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
         </div>
     </div>
 </div>
@@ -81,18 +91,18 @@
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
-            var index = layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            }, function () {
-
-                // 关闭弹出层
-                layer.close(index);
-
-                var iframeIndex = parent.layer.getFrameIndex(window.name);
-                parent.layer.close(iframeIndex);
-
-            });
-
+            // var index = layer.alert(JSON.stringify(data.field), {
+            //     title: '最终的提交信息'
+            // }, function () {
+            //
+            //     // 关闭弹出层
+            //     layer.close(index);
+            //
+            //     var iframeIndex = parent.layer.getFrameIndex(window.name);
+            //     parent.layer.close(iframeIndex);
+            //
+            // });
+            // taskAdd(data);
             return false;
         });
 
