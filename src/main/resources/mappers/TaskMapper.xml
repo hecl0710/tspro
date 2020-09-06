@@ -19,6 +19,7 @@
         <result column="DELIVERY_STATUS" property="deliveryStatus"/>
         <result column="CREATE_TIME" property="createTime"/>
         <result column="UPDATE_TIME" property="updateTime"/>
+        <result column="STAFF_SKILLS" property="staffSkills"/>
         <result column="CUST_NAME" property="custName"/>
         <result column="COMPANY_BUSINESS" property="companyBusiness"/>
         <result column="COMPANY_ID" property="companyId"/>
@@ -33,9 +34,16 @@
         LEFT JOIN T_TS_PLATFORM_INFO tsPlatformInfo ON relCustinfo.ts_id = tsPlatformInfo.company_id
     </select>
 
+    <!--添加任务信息-->
     <insert id="addTaskData" parameterType="TaskInfo">
         INSERT INTO T_TASK_INFO (TASK_ID,CUST_ID,TASK_NAME,TASK_DETAIL,STATUS,AMOUNT,STAFF_SKILLS)
         VALUES(#{taskId},#{custId},#{taskName},#{taskDetail},#{status},#{amount},#{staffSkills})
     </insert>
+    <!--更新任务信息-->
+    <update id="editTaskData" parameterType="TaskInfo">
+        UPDATE T_TASK_INFO
+        SET TASK_NAME=#{taskName},TASK_DETAIL=#{taskDetail},STAFF_SKILLS=#{staffSkills}
+        where TASK_ID=#{taskId}
+    </update>
 
 </mapper>

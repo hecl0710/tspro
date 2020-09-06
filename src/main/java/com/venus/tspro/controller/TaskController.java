@@ -1,7 +1,7 @@
 package com.venus.tspro.controller;
 
-import com.venus.tspro.global.PageVO;
 import com.venus.tspro.entity.TaskInfo;
+import com.venus.tspro.global.PageVO;
 import com.venus.tspro.global.ResponseData;
 import com.venus.tspro.service.TaskService;
 import org.springframework.stereotype.Controller;
@@ -39,6 +39,19 @@ public class TaskController {
     @ResponseBody
     public ResponseData addTaskData(TaskInfo taskInfo){
         taskService.addTaskData(taskInfo);
+        return null;
+    }
+
+    /**
+     * 修改任务信息
+     *
+     * @param taskInfo
+     * @return
+     */
+    @RequestMapping("edit")
+    @ResponseBody
+    public ResponseData editTaskData(TaskInfo taskInfo) {
+        taskService.editTaskData(taskInfo);
         return null;
     }
 }

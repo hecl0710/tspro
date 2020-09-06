@@ -17,15 +17,15 @@
         </div>
     </fieldset>
 
-    <script id="toolbarDemo" type="text/html">
+    <script id="taskToolbar" type="text/html">
         <div class="layui-btn-container">
             <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">新建任务</button>
         </div>
     </script>
 
-    <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+    <table class="layui-hide" id="taskTable" lay-filter="taskTableFilter"></table>
 
-    <script id="currentTableBar" type="text/html">
+    <script id="taskTableBar" type="text/html">
         <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
     </script>
 </div>

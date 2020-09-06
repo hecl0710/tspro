@@ -33,6 +33,7 @@
 <div class="layui-form layuimini-form">
     <div>
         <input id="custId" hidden="true">
+        <input hidden="true" id="taskId">
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">公司名称</label>
@@ -57,21 +58,24 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">任务名称</label>
         <div class="layui-input-block">
-            <textarea class="layui-textarea"  lay-verify="required" lay-reqtext="任务名称不能为空"   name="taskName" id="taskName" placeholder="必填项目"></textarea>
+            <textarea class="layui-textarea" id="taskName" lay-reqtext="任务名称不能为空" lay-verify="required" maxlength="70"
+                      name="taskName" placeholder="必填项目"></textarea>
             <tip>如：xx服务/开发外包，70字以内</tip>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">任务内容</label>
         <div class="layui-input-block">
-            <textarea class="layui-textarea" name="taskDetail" id="taskDetail" placeholder="选填项目"></textarea>
+            <textarea class="layui-textarea" id="taskDetail" maxlength="70" name="taskDetail"
+                      placeholder="选填项目"></textarea>
             <tip>任务内容必须为合同中列明的服务内容，70字以内</tip>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">人员技能</label>
         <div class="layui-input-block">
-            <textarea class="layui-textarea" name="staffSkills" id="staffSkills" placeholder="选填项目"></textarea>
+            <textarea class="layui-textarea" id="staffSkills" maxlength="70" name="staffSkills"
+                      placeholder="选填项目"></textarea>
             <tip>人员技能必须为合同中列明的服务内容，70字以内</tip>
         </div>
     </div>
@@ -103,6 +107,7 @@
             //
             // });
             // taskAdd(data);
+            //https://blog.csdn.net/qq_35393869/article/details/86627689 自定义提示
             return false;
         });
 

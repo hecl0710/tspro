@@ -8,4 +8,6 @@ public interface TaskService {
     PageVO<TaskInfo> getTaskData(TaskInfo taskInfo);
 
     void addTaskData(TaskInfo taskInfo);
+
+    void editTaskData(TaskInfo taskInfo);
 }
