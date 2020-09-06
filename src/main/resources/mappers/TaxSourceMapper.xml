@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.venus.tspro.dao.TaxSourceDao">
+    <resultMap id="taxSourceResultMap" type="TaxSource">
+        <id property="tsId" column="T_TS_ID"></id>
+        <result property="tsName" column="T_TS_NAME"></result>
+        <result property="tsAgreement" column="T_TS_AGREEMENT"></result>
+        <result property="perVAT" column="P_VAT"></result>
+        <result property="perCMT" column="P_CMT"></result>
+        <result property="perEST" column="P_EST"></result>
+        <result property="perPIT" column="P_PIT"></result>
+        <result property="perVatRemain" column="P_VAT_REMAIN"></result>
+        <result property="perVatRefund" column="P_VAT_REFUND"></result>
+        <result property="perPitRemain" column="P_PIT_REMAIN"></result>
+        <result property="perPitRefund" column="P_PIT_REFUND"></result>
+        <result property="pitAvoidAmount" column="PIT_AVOID_AMOUNT"></result>
+        <result property="status" column="STATUS"></result>
+        <result property="createTime" column="CREATE_TIME"></result>
+        <result property="updateTime" column="UPDATE_TIME"></result>
+        <result property="optUser" column="OPT_USER"></result>
+    </resultMap>
+
+    <select id="queryAllTaxSource"  resultMap="taxSourceResultMap">
+        SELECT * FROM T_TS_INFO T
+    </select>
+</mapper>
