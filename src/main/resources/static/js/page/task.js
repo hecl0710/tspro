@@ -203,11 +203,23 @@ layui.use(['form', 'table'], function () {
                         // layer.alert("添加成功!")
                     });
                 } else {
-                    layer.alert(data.msg);
+                    parent.layer.open({
+                        title: '添加失败',
+                        type: 2,
+                        shade: 0.2,
+                        area: ['20%', '30%'],
+                        content: '/page/bounced/prompt.html',
+                        btn: ['关闭'],
+                        success: function (layero, index) {
+                            var addTaskBody = parent.layer.getChildFrame('body', index);
+                            addTaskBody.find("#msg").html(data.msg);
+                        }
+                    });
                 }
             },
             error: function () {
-                layer.alert("添加失败，请重试！");
+                // var addTaskBody = parent.layer.getChildFrame('body', index);
+                // addTaskBody.alert("修改失败，请重试！");
             }
         });
     }
@@ -233,11 +245,23 @@ layui.use(['form', 'table'], function () {
                         search();
                     });
                 } else {
-                    layer.alert(data.msg);
+                    parent.layer.open({
+                        title: '修改失败',
+                        type: 2,
+                        shade: 0.2,
+                        area: ['20%', '30%'],
+                        content: '/page/bounced/prompt.html',
+                        btn: ['关闭'],
+                        success: function (layero, index) {
+                            var addTaskBody = parent.layer.getChildFrame('body', index);
+                            addTaskBody.find("#msg").html(data.msg);
+                        }
+                    });
                 }
             },
             error: function () {
-                layer.alert("修改失败，请重试！");
+                var addTaskBody = parent.layer.getChildFrame('body', index);
+                addTaskBody.alert("修改失败，请重试！");
             }
         });
     }

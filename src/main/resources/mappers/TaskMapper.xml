@@ -32,17 +32,18 @@
         LEFT JOIN T_CUSTOMER_INFO custinfo ON taskinfo.cust_id = custinfo.cust_id
         LEFT JOIN T_REL_CUST_TS relCustinfo ON custinfo.cust_id = relCustinfo.Cust_Id
         LEFT JOIN T_TS_PLATFORM_INFO tsPlatformInfo ON relCustinfo.ts_id = tsPlatformInfo.company_id
+        ORDER BY taskinfo.update_time DESC
     </select>
 
     <!--添加任务信息-->
     <insert id="addTaskData" parameterType="TaskInfo">
-        INSERT INTO T_TASK_INFO (TASK_ID,CUST_ID,TASK_NAME,TASK_DETAIL,STATUS,AMOUNT,STAFF_SKILLS)
-        VALUES(#{taskId},#{custId},#{taskName},#{taskDetail},#{status},#{amount},#{staffSkills})
+        INSERT INTO T_TASK_INFO (TASK_ID,CUST_ID,TASK_NAME,TASK_DETAIL,STATUS,AMOUNT,STAFF_SKILLS,CREATE_TIME,UPDATE_TIME)
+        VALUES(#{taskId},#{custId},#{taskName},#{taskDetail},#{status},#{amount},#{staffSkills},#{createTime},#{updateTime})
     </insert>
     <!--更新任务信息-->
     <update id="editTaskData" parameterType="TaskInfo">
         UPDATE T_TASK_INFO
-        SET TASK_NAME=#{taskName},TASK_DETAIL=#{taskDetail},STAFF_SKILLS=#{staffSkills}
+        SET TASK_NAME=#{taskName},TASK_DETAIL=#{taskDetail},STAFF_SKILLS=#{staffSkills},UPDATE_TIME=#{updateTime}
         where TASK_ID=#{taskId}
     </update>
 
