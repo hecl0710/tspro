@@ -4,7 +4,31 @@
     <meta charset="UTF-8">
     <title>结算打款</title>
 </head>
-<body>
+<link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
+<link href="/static/css/public.css" media="all" rel="stylesheet">
+<script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
+<script src="/static/js/page/distribute.js"></script>
+<body class="layuimini-container">
 
+<div class="layuimini-main">
+
+    <fieldset class="table-search-fieldset">
+        <div style="margin: 10px 10px 10px 10px">
+            <h3>结算打款</h3>
+        </div>
+    </fieldset>
+
+    <script id="distributeToolbar" type="text/html">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">发起结算</button>
+        </div>
+    </script>
+
+    <table class="layui-hide" id="distributeTable" lay-filter="distributeTableFilter"></table>
+
+    <script id="distributeTableBar" type="text/html">
+        <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">查看详情</a>
+    </script>
+</div>
 </body>
 </html>
