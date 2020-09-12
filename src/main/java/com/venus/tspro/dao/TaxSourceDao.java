@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface TaxSourceDao {
     List<TaxSource> queryAllTaxSource();
+    void saveNewTaxSource(TaxSource taxSource);
 }

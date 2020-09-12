@@ -3,24 +3,37 @@
 <mapper namespace="com.venus.tspro.dao.TaxSourceDao">
     <resultMap id="taxSourceResultMap" type="TaxSource">
         <id property="tsId" column="T_TS_ID"></id>
-        <result property="tsName" column="T_TS_NAME"></result>
-        <result property="tsAgreement" column="T_TS_AGREEMENT"></result>
-        <result property="perVAT" column="P_VAT"></result>
-        <result property="perCMT" column="P_CMT"></result>
-        <result property="perEST" column="P_EST"></result>
-        <result property="perPIT" column="P_PIT"></result>
-        <result property="perVatRemain" column="P_VAT_REMAIN"></result>
-        <result property="perVatRefund" column="P_VAT_REFUND"></result>
-        <result property="perPitRemain" column="P_PIT_REMAIN"></result>
-        <result property="perPitRefund" column="P_PIT_REFUND"></result>
-        <result property="pitAvoidAmount" column="PIT_AVOID_AMOUNT"></result>
+        <result property="tsName" column="T_TS_NAME" jdbcType="VARCHAR"></result>
+        <result property="tsAgreement" column="T_TS_AGREEMENT" jdbcType="VARCHAR"></result>
+        <result property="perVAT" column="P_VAT" jdbcType="VARCHAR"></result>
+        <result property="perCMT" column="P_CMT" jdbcType="VARCHAR"></result>
+        <result property="perEST" column="P_EST" jdbcType="VARCHAR"></result>
+        <result property="perPIT" column="P_PIT" jdbcType="VARCHAR"></result>
+        <result property="perVatRemain" column="P_VAT_REMAIN" jdbcType="VARCHAR"></result>
+        <result property="perVatRefund" column="P_VAT_REFUND" jdbcType="VARCHAR"></result>
+        <result property="perPitRemain" column="P_PIT_REMAIN" jdbcType="VARCHAR"></result>
+        <result property="perPitRefund" column="P_PIT_REFUND" jdbcType="VARCHAR"></result>
+        <result property="pitAvoidAmount" column="PIT_AVOID_AMOUNT" jdbcType="VARCHAR"></result>
         <result property="status" column="STATUS"></result>
         <result property="createTime" column="CREATE_TIME"></result>
         <result property="updateTime" column="UPDATE_TIME"></result>
-        <result property="optUser" column="OPT_USER"></result>
+        <result property="optUser" column="OPT_USER" jdbcType="VARCHAR"></result>
     </resultMap>
+
+    <sql id="insertTaxSourceSql">
+        (T_TS_ID,T_TS_NAME,T_TS_AGREEMENT,P_VAT,P_CMT,P_EST,P_PIT,P_VAT_REMAIN,P_VAT_REFUND,P_PIT_REMAIN,P_PIT_REFUND,
+                PIT_AVOID_AMOUNT,STATUS,CREATE_TIME,UPDATE_TIME,OPT_USER)
+    </sql>
 
     <select id="queryAllTaxSource"  resultMap="taxSourceResultMap">
         SELECT * FROM T_TS_INFO T
     </select>
+
+    <insert id="saveNewTaxSource" parameterType="TaxSource">
+        INSERT INTO T_TS_INFO <include refid="insertTaxSourceSql"></include> VALUES (
+            #{tsId},#{tsName},#{tsAgreement,jdbcType=VARCHAR},#{perVAT},#{perCMT},#{perEST},#{perPIT},#{perVatRemain},#{perVatRefund},
+            #{perPitRemain},#{perPitRefund},#{pitAvoidAmount},'1',TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),
+            #{optUser,jdbcType=VARCHAR}
+        )
+    </insert>
 </mapper>

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface TaxSourceService {
     List<TaxSource> queryAllTaxSource();
+    void addNewTaxSource(TaxSource taxSource);
 }
