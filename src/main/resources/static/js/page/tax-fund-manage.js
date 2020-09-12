@@ -4,14 +4,13 @@ layui.use(['table','form'],function () {
         form = layui.form;
 
     table.render({
-        elem: '#tsf-table',
+        elem: '#tsfTable',
         url: '/tsf/list',
         method: 'post',
-        toolbar: '#tsf-toolbar',
+        toolbar: '#tsfToolBar',
         defaultToolbar: [],
         //处理返回参数
         parseData: function (res) {
-            console.info(res);
             return {
                 "code": res.code,
                 "msg": res.msg,
@@ -48,5 +47,31 @@ layui.use(['table','form'],function () {
         limits: [10, 15, 20, 25, 50, 100],
         limit: 15,
         page: true
+        // done: function (res, curr, count) {
+        //     $("[data-field='status']").children().each(function () {
+        //         if($(this).text()=='1')
+        //             $(this).text = "正常";
+        //         if($(this).text()=='0')
+        //             $(this).text = "注销";
+        //     })
+        // }
     });
+
+    table.on('toolbar(tsfTableFilter)',function (obj) {
+        if(obj.event=='add'){
+            var index = parent.layer.open({
+                title: '新增税源',
+                type: 2,
+                shade: 0.2,
+                maxmin: true,
+                shadeClose: true,
+                area: ['50%', '80%'],
+                content: '/page/bounced/addTaxSource.html',
+                btn: ['关闭', '确认']
+            });
+            $(window).on("resize", function () {
+                layer.full(index);
+            });
+        }
+    })
 })

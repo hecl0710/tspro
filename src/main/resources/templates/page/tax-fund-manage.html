@@ -8,23 +8,15 @@
     <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
 </head>
 <body>
-<div class="layui-container">
-    <div></div>
-</div>
-
-<script id="tsf-toolbar" type="text/html">
-    <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">新建税源</button>
-    </div>
-</script>
-
-<fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
-    <legend>税源地管理</legend>
-    <table id="tsf-table"></table>
-</fieldset>
-
-
-
+    <script id="tsfToolBar" type="text/html">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm data-add-btn" lay-event="add">新增税源</button>
+        </div>
+    </script>
+    <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+        <legend>税源地管理</legend>
+        <table id="tsfTable" lay-filter="tsfTableFilter"></table>
+    </fieldset>
 </body>
-<script src="../../static/js/page/tax-fund-manage.js?v=1.0.3" charset="UTF-8"></script>
+<script src="../../static/js/page/tax-fund-manage.js?v=1.1.2" charset="UTF-8"></script>
 </html>
