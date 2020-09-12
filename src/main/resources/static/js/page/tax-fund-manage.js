@@ -7,6 +7,7 @@ layui.use(['table','form'],function () {
     url: '/tsf/list',
     method: 'post',
     toolbar: '#tsfToolBar',
+    cellMinWidth: 100,
     defaultToolbar: [],
     //处理返回参数
     parseData: function (res) {
@@ -41,7 +42,7 @@ layui.use(['table','form'],function () {
         {field: 'createTime', title: '创建时间', sort: true},
         {field: 'updateTime', title: '更新时间'},
         {field: 'optUser', title: '最后更新操作人'},
-        {title: '操作', minWidth: 150, toolbar: '#tsf-tool', align: "center"}
+        {title: '操作', minWidth: 150, toolbar: '#tsfOptionTool', align: "center"}
     ]],
     limits: [10, 15, 20, 25, 50, 100],
     limit: 15,
@@ -64,7 +65,7 @@ layui.use(['table','form'],function () {
                 maxmin: true,
                 shadeClose: true,
                 area: ['50%', '80%'],
-                content: '/page/bounced/addTaxSource.html',
+                content: '/page/bounced/add-tax-source.html',
                 btn: ['关闭', '确认'],
                 btn1: function (index,layero) {
                     parent.layer.close(index);

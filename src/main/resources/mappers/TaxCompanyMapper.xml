@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.venus.tspro.dao.TaxCompanyDao">
+    <resultMap id="taxCompanyResultMap" type="TaxCompany">
+        <id property="companyId" column="COMPANY_ID"></id>
+        <result property="companyName" column="COMPANY_NAME" jdbcType="VARCHAR"></result>
+        <result property="businessLicence" column="BUSINESS_LICENCE" jdbcType="VARCHAR"></result>
+        <result property="legalName" column="LEGAL_NAME" jdbcType="VARCHAR"></result>
+        <result property="legalId" column="LEGAL_ID" jdbcType="VARCHAR"></result>
+        <result property="status" column="STATUS"></result>
+        <result property="createTime" column="CREATE_TIME"></result>
+        <result property="updateTime" column="UPDATE_TIME"></result>
+        <result property="optUser" column="OPT_USER" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <sql id="insertTaxCompanySql">
+        (COMPANY_ID,COMPANY_NAME,BUSINESS_LICENCE,LEGAL_NAME,LEGAL_ID,STATUS,CREATE_TIME,UPDATE_TIME,OPT_USER)
+    </sql>
+
+    <select id="queryAllTaxCompany"  resultMap="taxCompanyResultMap">
+        SELECT * FROM T_TS_PLATFORM_INFO T
+    </select>
+
+    <insert id="saveNewTaxCompany" parameterType="TaxCompany">
+        INSERT INTO T_TS_PLATFORM_INFO <include refid="insertTaxCompanySql"></include> VALUES (
+            #{companyId},#{companyName},#{businessLicence,jdbcType=VARCHAR},#{legalName},#{legalId},'1',TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),
+            #{optUser,jdbcType=VARCHAR}
+        )
+    </insert>
+</mapper>

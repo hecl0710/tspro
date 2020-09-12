@@ -12,4 +12,12 @@ public class SeqBuilder {
     public static String buildTaxSourceId(){
         return "TS"+RandomBuilder.buildRandomStr(6);
     }
+
+    /**
+     * 税源企业编码生成
+     * @return
+     */
+    public static String buildTaxCompanyId(){
+        return "TC"+RandomBuilder.buildRandomStr(6);
+    }
 }
