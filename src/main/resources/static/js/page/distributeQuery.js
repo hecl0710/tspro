@@ -7,16 +7,19 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     //日期控件
     laydate.render({
-        elem: '#test5'
+        elem: '#creatTime'
         , type: 'datetime'
     });
 
-    var search = function () {
+    var search = function (patamData) {
         table.render({
             elem: '#distributeQueryTable',
-            url: '/task/list',
+            url: '/distribute/trade/list',
             defaultToolbar: [],
             page: true,//是否分页
+            method: 'post',
+            where: patamData,
+            contentType: "application/json;charset=UTF-8",
             request: {
                 pageName: 'pageNumber',
                 limitName: 'pageSize'
@@ -46,32 +49,29 @@ layui.use(['form', 'table', 'laydate'], function () {
                 dataName: 'data'
             },
             cols: [[
-                {field: 'taskId', title: '任务id', hide: true},
-                {field: 'taskName', title: '任务名称'},
-                {field: 'taskDetail', title: '任务内容'},
-                {field: 'companyName', title: '服务公司'},
-                {field: 'status', title: '任务状态'},
-                {field: 'amount', title: '发放金额',},
-                {field: 'taxFee', title: '综合税费'},
-                {field: 'fee', title: '服务费'},
-                {field: 'companyBusiness', title: '公司业务', hide: true},
-                {field: 'createTime', title: '创建时间', sort: true}
+                {field: 'custId', title: '企业编号', hide: true},
+                {field: 'creatTime', title: '发起时间'},
+                {field: 'status', title: '打款状态'},
+                {field: 'amount', title: '打款金额'},
+                {field: 'empName', title: '收款人'},
+                {field: 'accountNo', title: '银行卡号',},
+                {field: 'accountName', title: '开户行'},
+                {field: 'documentType', title: '证件类型'},
+                {field: 'identifyId', title: '证件号码'},
+                {field: 'phone', title: '手机号码'}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
             limit: 10,
             done: function (res, curr, count) {
                 $("[data-field='status']").children().each(function () {
                     if ($(this).text() == '1') {
-                        $(this).text("发送完成")
+                        $(this).text("已结算")
                     }
                     if ($(this).text() == '2') {
-                        $(this).text("待发放")
+                        $(this).text("待结算")
                     }
                     if ($(this).text() == '3') {
-                        $(this).text("部分发放失败")
-                    }
-                    if ($(this).text() == '4') {
-                        $(this).text("已取消")
+                        $(this).text("结算失败")
                     }
                 });
             }
@@ -79,4 +79,21 @@ layui.use(['form', 'table', 'laydate'], function () {
     }
     //页面加载就查询列表
     search();
+
+    //条件查询
+    form.on('submit(queryDistributeOrderFilter)', function (data) {
+        data = data.field;
+        search(data);
+    })
+
+    //重置按钮
+    $("#clearDistributeOrderBtn").on("click", function () {
+        $("#empName").val("");
+        $("#phone").val("");
+        $("#identifyId").val("");
+        $("#creatTime").val("");
+        $("#accountNo").val("");
+        $("#status").val("");
+        form.render();
+    });
 });
