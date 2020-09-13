@@ -4,7 +4,52 @@
     <meta charset="UTF-8">
     <title>客户基本信息管理</title>
 </head>
-<body>
+<link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
+<link href="/static/css/public.css" media="all" rel="stylesheet">
+<script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
+<script src="/static/js/page/customerInfo.js"></script>
+<body class="layuimini-container">
+<div class="layuimini-main">
+    <fieldset class="table-search-fieldset">
+        <legend>客户基本信息</legend>
+        <div class="layui-form layuimini-form" style="margin: 10px 10px 10px 10px">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">客户名称</label>
+                    <div class="layui-input-inline">
+                        <input autocomplete="off" class="layui-input" id="custName" name="custName" type="text">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">法人姓名</label>
+                    <div class="layui-input-inline">
+                        <input autocomplete="off" class="layui-input" id="legalName" name="legalName" type="text">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary" id="queryCustomerBtn" lay-filter="queryCustomerFilter"
+                            lay-submit><i class="layui-icon"></i> 查询
+                    </button>
+                    <button class="layui-btn layui-btn-primary" id="resetCustomerQueryBtn"
+                            lay-filter="resetCustomerQueryFilter" lay-submit><i class="layui-icon"></i> 重置
+                    </button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
 
+    <script id="customerToolbar" type="text/html">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">新建客户信息</button>
+        </div>
+    </script>
+
+    <table class="layui-hide" id="customerTable" lay-filter="customerTableFilter"></table>
+
+    <script id="customerTableBar" type="text/html">
+        <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="editCustomer">修改</a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="deleteCustomer">删除</a>
+    </script>
+</div>
 </body>
 </html>

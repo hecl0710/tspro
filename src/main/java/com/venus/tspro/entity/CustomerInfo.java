@@ -1,5 +1,6 @@
 package com.venus.tspro.entity;
 
+import com.venus.tspro.global.BaseEntity;
 import lombok.Data;
 
 /**
@@ -7,7 +8,7 @@ import lombok.Data;
  *
  */
 @Data
-public class CustomerInfo {
+public class CustomerInfo extends BaseEntity {
 
     /**
      * 客户编码

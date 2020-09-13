@@ -95,9 +95,8 @@ layui.use(['form', 'table'], function () {
                 btn2: function(index,layero) {//点击发布按钮
 
                     var addTaskBody = parent.layer.getChildFrame('body', index);
-                    var submited = addTaskBody.find('button')[0];
+                    parent.layer.getChildFrame('body', index).find('#saveBtn').click();
                     // 触发点击事件，会对表单进行验证，验证成功则提交表单，失败则返回错误信息
-                    submited.click();
                     var taskName = addTaskBody.find("#taskName").val();
                     if(Object.keys(taskName).length != 0){
                         taskAdd(addTaskBody,index);

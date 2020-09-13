@@ -28,4 +28,13 @@ public class SeqBuilder {
     public static String buildBillId(){
         return "BI"+RandomBuilder.buildRandomStr(10);
     }
+
+    /**
+     * 客户编码生成
+     *
+     * @return
+     */
+    public static String buildCustomerCustId() {
+        return "CI" + RandomBuilder.buildRandomStr(6);
+    }
 }
