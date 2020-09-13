@@ -27,4 +27,24 @@
             #{optUser,jdbcType=VARCHAR}
         )
     </insert>
+
+    <update id="updateTaxCompany" parameterType="TaxCompany">
+        UPDATE T_TS_PLATFORM_INFO T
+        <set>
+            <if test="companyName!='' and companyName!=null">
+                T.COMPANY_NAME = #{companyName},
+            </if>
+            <if test="businessLicence!='' and businessLicence!=null">
+                T.BUSINESS_LICENCE = #{businessLicence},
+            </if>
+            <if test="legalName!='' and legalName!=null">
+                T.LEGAL_NAME = #{legalName},
+            </if>
+            <if test="legalId!='' and legalId!=null">
+                T.LEGAL_ID = #{legalId},
+            </if>
+            T.UPDATE_TIME = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')
+        </set>
+        WHERE T.COMPANY_ID = #{companyId}
+    </update>
 </mapper>

@@ -7,4 +7,5 @@ import java.util.List;
 public interface TaxCompanyDao {
     List<TaxCompany> queryAllTaxCompany();
     void saveNewTaxCompany(TaxCompany taxCompany);
+    void updateTaxCompany(TaxCompany taxCompany);
 }

@@ -83,4 +83,48 @@ layui.use(['table','form'],function () {
             });
         }
     })
+
+    table.on('tool(tsfTableFilter)', function (lineObj) {
+        var data = lineObj.data;
+        if (lineObj.event === 'edit') {
+            var index = parent.layer.open({
+                title: '编辑税源地',
+                type: 2,
+                shade: 0.2,
+                maxmin: true,
+                shadeClose: true,
+                area: ['50%', '80%'],
+                content: '/page/bounced/add-tax-source.html',
+                btn: ['关闭', '确认'],
+                success: function(layero,index){
+                    var tsfBody = parent.layer.getChildFrame('body', index);
+                    tsfBody.find("#tsId").val(data.tsId);
+                    tsfBody.find("#tsName").val(data.tsName);
+                    tsfBody.find("#perVAT").val(data.perVAT);
+                    tsfBody.find("#perCMT").val(data.perCMT);
+                    tsfBody.find("#perEST").val(data.perEST);
+                    tsfBody.find("#perPIT").val(data.perPIT);
+                    tsfBody.find("#perVatRemain").val(data.perVatRemain);
+                    tsfBody.find("#perVatRefund").val(data.perVatRefund);
+                    tsfBody.find("#perPitRemain").val(data.perPitRemain);
+                    tsfBody.find("#perPitRefund").val(data.perPitRefund);
+                    tsfBody.find("#pitAvoidAmount").val(data.pitAvoidAmount);
+                },
+                btn1: function (index,layero) {
+                    parent.layer.close(index);
+                },
+                btn2: function (index,layero) {
+                    parent.layer.getChildFrame('body', index).find('#editTsfBtn').click();
+                    return false;
+                },
+                end: function () {
+                    window.location.reload();
+                }
+            });
+            $(window).on("resize", function () {
+                layer.full(index);
+            });
+        }
+
+    })
 })

@@ -8,10 +8,10 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
     <link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
     <link href="/static/css/public.css" media="all" rel="stylesheet">
-    <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
-    <script charset="utf-8" src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
-    <script charset="utf-8" src="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.js"></script>
-    <link href="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all" rel="stylesheet">
+    <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.all.js"></script>
+<!--    <script charset="utf-8" src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>-->
+<!--    <script charset="utf-8" src="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.js"></script>-->
+<!--    <link href="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all" rel="stylesheet">-->
     <style>
         body {
             background-color: #ffffff;
@@ -34,35 +34,41 @@
 </head>
 <body>
 <div class="layui-form layuimini-form">
+    <div class="layui-form-item" hidden="hidden">
+        <div class="layui-input-block">
+            <input class="layui-input" id="companyId" name="companyId" type="text" value="">
+        </div>
+    </div>
     <div class="layui-form-item">
         <label class="layui-form-label">企业名称</label>
         <div class="layui-input-block">
-            <input class="layui-input" id="" lay-reqtext="企业名称不能为空" lay-verify="required" name="companyName" type="text"
+            <input class="layui-input" lay-reqtext="企业名称不能为空" lay-verify="required" id="companyName" name="companyName" type="text"
                    value="">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">工商注册编码</label>
         <div class="layui-input-block">
-            <input class="layui-input" name="businessLicence" type="text" value="">
+            <input class="layui-input" id="businessLicence" name="businessLicence" type="text" value="">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">法人姓名</label>
         <div class="layui-input-block">
-            <input class="layui-input" name="legalName" type="text" value="">
+            <input class="layui-input" id="legalName" name="legalName" type="text" value="">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">法人身份证</label>
         <div class="layui-input-block">
-            <input class="layui-input" lay-verify="number" name="legalId" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="legalId" name="legalId" type="text" value="">
         </div>
     </div>
 
     <div class="layui-form-item" hidden="hidden">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit id="addTscBtn" lay-filter="addTscFilter">立即提交</button>
+            <button class="layui-btn" lay-submit id="addTscBtn" lay-filter="addTscFilter">提交</button>
+            <button class="layui-btn" lay-submit id="editTscBtn" lay-filter="editTscFilter">编辑</button>
         </div>
     </div>
 

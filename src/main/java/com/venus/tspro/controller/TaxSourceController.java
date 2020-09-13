@@ -1,7 +1,5 @@
 package com.venus.tspro.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.databind.ser.Serializers;
 import com.github.pagehelper.PageInfo;
 import com.venus.tspro.entity.TaxSource;
 import com.venus.tspro.global.BaseResponse;
@@ -39,8 +37,12 @@ public class TaxSourceController {
 
     @PostMapping("add")
     public BaseResponse addTaxSource(@RequestBody TaxSource taxSource){
-        log.info("接收到增加税源地请求：{}", JSON.toJSONString(taxSource));
         taxSourceService.addNewTaxSource(taxSource);
         return ResponseBuilder.buildSuccessResponse();
+    }
+
+    @PostMapping("edit")
+    public void editTaxSource(@RequestBody TaxSource taxSource){
+        taxSourceService.editTaxSource(taxSource);
     }
 }

@@ -9,9 +9,9 @@
     <link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
     <link href="/static/css/public.css" media="all" rel="stylesheet">
     <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
-    <script charset="utf-8" src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
-    <script charset="utf-8" src="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.js"></script>
-    <link href="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all" rel="stylesheet">
+<!--    <script charset="utf-8" src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>-->
+<!--    <script charset="utf-8" src="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.js"></script>-->
+<!--    <link href="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all" rel="stylesheet">-->
     <style>
         body {
             background-color: #ffffff;
@@ -35,73 +35,79 @@
 </head>
 <body>
 <div class="layui-form layuimini-form">
+    <div class="layui-form-item" hidden="hidden">
+        <label class="layui-form-label">税源编码</label>
+        <div class="layui-input-inline">
+            <input class="layui-input" id="tsId" name="tsId" type="text" value="">
+        </div>
+    </div>
     <div class="layui-form-item">
         <label class="layui-form-label">税源名称</label>
         <div class="layui-input-block">
-            <input class="layui-input" id="" lay-reqtext="税源名称不能为空" lay-verify="required" name="tsName" type="text"
+            <input class="layui-input" id="tsName" lay-reqtext="税源名称不能为空" lay-verify="required" name="tsName" type="text"
                    value="">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">增值税标准税率</label>
         <div class="layui-input-inline">
-            <input class="layui-input" lay-verify="number" name="perVAT" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="perVAT" name="perVAT" type="text" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">%</div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">城建税标准税率</label>
         <div class="layui-input-inline">
-            <input class="layui-input" lay-verify="number" name="perCMT" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="perCMT" name="perCMT" type="text" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">%</div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">教育附加税</label>
         <div class="layui-input-inline">
-            <input class="layui-input" lay-verify="number" name="perEST" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="perEST" name="perEST" type="text" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">%</div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">个人所得税</label>
         <div class="layui-input-inline">
-            <input class="layui-input" lay-verify="number" name="perPIT" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="perPIT" name="perPIT" type="text" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">%</div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">增值税地方留存</label>
         <div class="layui-input-inline">
-            <input class="layui-input" lay-verify="number" name="perVatRemain" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="perVatRemain" name="perVatRemain" type="text" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">%</div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">增值税返还</label>
         <div class="layui-input-inline">
-            <input class="layui-input" lay-verify="number" name="perVatRefund" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="perVatRefund" name="perVatRefund" type="text" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">%</div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">个税地方留存</label>
         <div class="layui-input-inline">
-            <input class="layui-input" lay-verify="number" name="perPitRemain" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="perPitRemain" name="perPitRemain" type="text" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">%</div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">个税返还</label>
         <div class="layui-input-inline">
-            <input class="layui-input" lay-verify="number" name="perPitRefund" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="perPitRefund" name="perPitRefund" type="text" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">%</div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">个税免征额</label>
         <div class="layui-input-inline">
-            <input class="layui-input" lay-verify="number" name="pitAvoidAmount" type="text" value="">
+            <input class="layui-input" lay-verify="number" id="pitAvoidAmount" name="pitAvoidAmount" type="text" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">元</div>
     </div>
@@ -113,7 +119,8 @@
 
     <div class="layui-form-item" hidden="hidden">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit id="addTsfBtn" lay-filter="addTsfFilter">立即提交</button>
+            <button class="layui-btn" lay-submit id="addTsfBtn" lay-filter="addTsfFilter">新增</button>
+            <button class="layui-btn" lay-submit id="editTsfBtn" lay-filter="editTsfFilter">编辑</button>
         </div>
     </div>
 

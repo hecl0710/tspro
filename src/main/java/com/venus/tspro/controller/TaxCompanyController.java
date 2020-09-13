@@ -36,4 +36,9 @@ public class TaxCompanyController {
         taxCompanyService.addTaxCompany(taxCompany);
         return ResponseBuilder.buildSuccessResponse();
     }
+
+    @PostMapping("edit")
+    public void editTaxCompany(@RequestBody TaxCompany taxCompany){
+        taxCompanyService.editTaxCompany(taxCompany);
+    }
 }

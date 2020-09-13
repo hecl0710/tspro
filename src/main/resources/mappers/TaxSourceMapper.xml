@@ -36,4 +36,47 @@
             #{optUser,jdbcType=VARCHAR}
         )
     </insert>
+
+    <update id="updateTaxSource" parameterType="TaxSource">
+        UPDATE T_TS_INFO T
+        <set>
+            <if test="tsName!='' and tsName!=null">
+                T.T_TS_NAME = #{tsName},
+            </if>
+            <if test="tsAgreement!='' and tsAgreement!=null">
+                T.T_TS_AGREEMENT = #{tsAgreement},
+            </if>
+            <if test="perVAT!='' and perVAT!=null">
+                T.P_VAT = #{perVAT},
+            </if>
+            <if test="perCMT!='' and perCMT!=null">
+                T.P_CMT = #{perCMT},
+            </if>
+
+            <if test="perEST!='' and perEST!=null">
+                T.P_EST = #{perEST},
+            </if>
+            <if test="perPIT!='' and perPIT!=null">
+                T.P_PIT = #{perPIT},
+            </if>
+            <if test="perVatRemain!='' and perVatRemain!=null">
+                T.P_VAT_REMAIN = #{perVatRemain},
+            </if>
+            <if test="perVatRefund!='' and perVatRefund!=null">
+                T.P_VAT_REFUND = #{perVatRefund},
+            </if>
+
+            <if test="perPitRemain!='' and perPitRemain!=null">
+                T.P_PIT_REMAIN = #{perPitRemain},
+            </if>
+            <if test="perPitRefund!='' and perPitRefund!=null">
+                T.P_PIT_REFUND = #{perPitRefund},
+            </if>
+            <if test="pitAvoidAmount!='' and pitAvoidAmount!=null">
+                T.PIT_AVOID_AMOUNT = #{pitAvoidAmount},
+            </if>
+            T.UPDATE_TIME = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')
+        </set>
+        WHERE T.T_TS_ID = #{tsId}
+    </update>
 </mapper>

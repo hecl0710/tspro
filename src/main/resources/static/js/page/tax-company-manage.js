@@ -65,6 +65,13 @@ layui.use(['table','form'],function () {
                 btn2: function (index,layero) {
                     parent.layer.getChildFrame('body', index).find('#addTscBtn').click();
                     return false;
+                    // var tscForm = parent.layer.getChildFrame('#tscForm', index);
+                    // var fields = tscForm.serializeArray();
+                    // var obj = {};
+                    // $.each(fields, function(index, field) {
+                    //     obj[field.name] = field.value; //通过变量，将属性值，属性一起放到对象中
+                    // })
+                    // console.info(JSON.stringify(obj));
                 },
                 end: function () {
                     window.location.reload();
@@ -74,5 +81,43 @@ layui.use(['table','form'],function () {
                 layer.full(index);
             });
         }
+    })
+
+    table.on('tool(tscTableFilter)', function (lineObj) {
+        var data = lineObj.data;
+        if (lineObj.event === 'edit') {
+            var index = parent.layer.open({
+                title: '编辑税源企业',
+                type: 2,
+                shade: 0.2,
+                maxmin: true,
+                shadeClose: true,
+                area: ['50%', '80%'],
+                content: '/page/bounced/add-tax-company.html',
+                btn: ['关闭', '确认'],
+                success: function(layero,index){
+                    var tscBody = parent.layer.getChildFrame('body', index);
+                    tscBody.find("#companyId").val(data.companyId);
+                    tscBody.find("#companyName").val(data.companyName);
+                    tscBody.find("#businessLicence").val(data.businessLicence);
+                    tscBody.find("#legalName").val(data.legalName);
+                    tscBody.find("#legalId").val(data.legalId);
+                },
+                btn1: function (index,layero) {
+                    parent.layer.close(index);
+                },
+                btn2: function (index,layero) {
+                    parent.layer.getChildFrame('body', index).find('#editTscBtn').click();
+                    return false;
+                },
+                end: function () {
+                    window.location.reload();
+                }
+            });
+            $(window).on("resize", function () {
+                layer.full(index);
+            });
+        }
+
     })
 })
