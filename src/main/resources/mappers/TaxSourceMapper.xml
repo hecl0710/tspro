@@ -75,6 +75,9 @@
             <if test="pitAvoidAmount!='' and pitAvoidAmount!=null">
                 T.PIT_AVOID_AMOUNT = #{pitAvoidAmount},
             </if>
+            <if test="status!='' and status!=null">
+                T.STATUS = #{status},
+            </if>
             T.UPDATE_TIME = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')
         </set>
         WHERE T.T_TS_ID = #{tsId}

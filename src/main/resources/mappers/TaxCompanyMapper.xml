@@ -43,6 +43,9 @@
             <if test="legalId!='' and legalId!=null">
                 T.LEGAL_ID = #{legalId},
             </if>
+            <if test="status!='' and status!=null">
+                T.STATUS = #{status},
+            </if>
             T.UPDATE_TIME = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')
         </set>
         WHERE T.COMPANY_ID = #{companyId}

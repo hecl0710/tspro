@@ -119,5 +119,36 @@ layui.use(['table','form'],function () {
             });
         }
 
+        if (lineObj.event == 'forbidden'){
+            var btnName = $(this).html();
+            console.info("执行"+btnName);
+            var status = 1;
+            if (btnName=='禁用')
+                status = 0;
+            var index = layer.confirm("确认"+btnName+"吗？",function () {
+                var obj = {};
+                obj.companyId = lineObj.data.companyId;
+                obj.status = status;
+                $.ajax({
+                    url:'/tsc/edit',
+                    type:'post',
+                    data:JSON.stringify(obj),
+                    contentType:'application/json',
+                    success:function (data) {
+                        if (data.code=="0000"){
+                            layer.alert(btnName+"成功",function () {
+                                layer.close(index);
+                                window.location.reload();
+                            });
+                        } else {
+                            layer.alert(btnName+"失败："+data.msg);
+                        }
+
+                    }
+
+                })
+            })
+        }
+
     })
 })
