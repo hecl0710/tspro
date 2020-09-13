@@ -104,7 +104,7 @@ layui.use(['form', 'table'], function () {
                 maxmin: true,
                 shadeClose: true,
                 area: ['50%', '80%'],
-                content: '/page/bounced/addCustomerSource.html',
+                content: '/page/bounced/add-customer.html',
                 btn: ['关闭', '添加'],
                 btn2: function (index, layero) {
                     // var formData = new FormData(parent.layer.getChildFrame('body', index).find('#addCustomerSource'));
@@ -145,7 +145,7 @@ layui.use(['form', 'table'], function () {
                 maxmin: true,
                 shadeClose: true,
                 area: ['50%', '80%'],
-                content: '/page/bounced/addCustomerSource.html',
+                content: '/page/bounced/add-customer.html',
                 btn: ['关闭', '修改'],
                 btn1: function (index, layero) {//点击关闭按钮
                     parent.layer.close(index);
