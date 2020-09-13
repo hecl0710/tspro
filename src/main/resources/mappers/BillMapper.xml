@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.venus.tspro.dao.BillDao">
+    <resultMap id="billResultMap" type="BillInfo">
+        <id property="billId" column="BILL_ID"></id>
+        <result property="billCode" column="BILL_CODE" jdbcType="VARCHAR"></result>
+        <result property="custId" column="CUST_ID" jdbcType="VARCHAR"></result>
+        <result property="custName" column="CUST_NAME" jdbcType="VARCHAR"></result>
+        <result property="taskId" column="TASK_ID" jdbcType="VARCHAR"></result>
+        <result property="taskName" column="TASK_NAME"></result>
+        <result property="taskAmount" column="TASK_AMOUNT"></result>
+        <result property="billStatus" column="BILL_STATUS"></result>
+        <result property="billAmount" column="BILL_AMOUNT"></result>
+        <result property="deliveryStatus" column="DELIVERY_STATUS"></result>
+        <result property="deliveryCode" column="DELIVERY_CODE"></result>
+        <result property="createTime" column="CREATE_TIME"></result>
+        <result property="updateTime" column="UPDATE_TIME"></result>
+        <result property="optUser" column="OPT_USER" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <sql id="insertTaxCompanySql">
+        (BILL_ID,BILL_CODE,CUST_ID,CUST_NAME,TASK_ID,TASK_NAME,
+        TASK_AMOUNT,BILL_STATUS,BILL_AMOUNT,DELIVERY_STATUS,DELIVERY_CODE,
+            CREATE_TIME,UPDATE_TIME,OPT_USER)
+    </sql>
+
+    <select id="queryAllBills"  resultMap="billResultMap">
+        SELECT * FROM T_BILL_INFO T
+    </select>
+
+    <insert id="saveNewBill" parameterType="BillInfo">
+        INSERT INTO T_TS_PLATFORM_INFO <include refid="insertTaxCompanySql"></include> VALUES (
+            #{billId},#{billCode},#{custId,jdbcType=VARCHAR},#{custName,jdbcType=VARCHAR},#{taskId,jdbcType=VARCHAR},
+            #{taskName},#{taskAmount,jdbcType=VARCHAR},#{billStatus,jdbcType=VARCHAR},#{billAmount,jdbcType=VARCHAR},#{deliveryStatus},#{deliveryCode},
+            TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),
+            #{optUser,jdbcType=VARCHAR}
+        )
+    </insert>
+
+<!--    <update id="updateTaxCompany" parameterType="TaxCompany">-->
+<!--        UPDATE T_TS_PLATFORM_INFO T-->
+<!--        <set>-->
+<!--            <if test="companyName!='' and companyName!=null">-->
+<!--                T.COMPANY_NAME = #{companyName},-->
+<!--            </if>-->
+<!--            <if test="businessLicence!='' and businessLicence!=null">-->
+<!--                T.BUSINESS_LICENCE = #{businessLicence},-->
+<!--            </if>-->
+<!--            <if test="legalName!='' and legalName!=null">-->
+<!--                T.LEGAL_NAME = #{legalName},-->
+<!--            </if>-->
+<!--            <if test="legalId!='' and legalId!=null">-->
+<!--                T.LEGAL_ID = #{legalId},-->
+<!--            </if>-->
+<!--            <if test="status!='' and status!=null">-->
+<!--                T.STATUS = #{status},-->
+<!--            </if>-->
+<!--            T.UPDATE_TIME = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')-->
+<!--        </set>-->
+<!--        WHERE T.COMPANY_ID = #{companyId}-->
+<!--    </update>-->
+</mapper>
