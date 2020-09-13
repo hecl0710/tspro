@@ -4,7 +4,7 @@
     "href": "page/main.html"
   },
   "logoInfo": {
-    "title": "启明星",
+    "title": "薪立方",
     "image": "../static/images/logo.png",
     "href": ""
   },
@@ -121,12 +121,6 @@
               "title": "发票管理",
               "href": "page/bill.html",
               "icon": "fa fa-money",
-              "target": "_self"
-            },
-            {
-              "title": "历史查询",
-              "href": "page/bill-query.html",
-              "icon": "fa fa-search",
               "target": "_self"
             }
           ]

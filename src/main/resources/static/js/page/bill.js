@@ -52,4 +52,32 @@ layui.use(['table','form'],function () {
         //     })
         // }
     });
-}
+
+    table.on('toolbar(billTableFilter)',function (obj) {
+        if(obj.event=='add'){
+            var index = parent.layer.open({
+                title: '新增发票',
+                type: 2,
+                shade: 0.2,
+                maxmin: true,
+                shadeClose: true,
+                area: ['50%', '80%'],
+                content: '/page/bounced/add-bill.html',
+                btn: ['关闭', '确认'],
+                btn1: function (index,layero) {
+                    parent.layer.close(index);
+                },
+                btn2: function (index,layero) {
+                    parent.layer.getChildFrame('body', index).find('#addBillBtn').click();
+                    return false;
+                },
+                end: function () {
+                    window.location.reload();
+                }
+            });
+            $(window).on("resize", function () {
+                layer.full(index);
+            });
+        }
+    })
+})
