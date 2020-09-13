@@ -20,4 +20,12 @@ public class SeqBuilder {
     public static String buildTaxCompanyId(){
         return "TC"+RandomBuilder.buildRandomStr(6);
     }
+
+    /**
+     * 发票编码生成
+     * @return
+     */
+    public static String buildBillId(){
+        return "BI"+RandomBuilder.buildRandomStr(10);
+    }
 }

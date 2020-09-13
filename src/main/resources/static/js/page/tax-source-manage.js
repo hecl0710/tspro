@@ -2,11 +2,11 @@ layui.use(['table','form'],function () {
     var $ = layui.jquery
     table = layui.table;
     form = layui.form;
-    form.on('submit(addTscFilter)',function (data) {
+    form.on('submit(addTsfFilter)',function (data) {
         data = data.field;
         $.ajax({
             type:"post",
-            url:"/tsc/add",
+            url:"/tsf/add",
             contentType :'application/json',
             data:JSON.stringify(data),
             dataType:"json",
@@ -22,11 +22,11 @@ layui.use(['table','form'],function () {
         });
     })
 
-    form.on('submit(editTscFilter)',function (data) {
+    form.on('submit(editTsfFilter)',function (data) {
         data = data.field;
         $.ajax({
             type:"post",
-            url:"/tsc/edit",
+            url:"/tsf/edit",
             contentType :'application/json',
             data:JSON.stringify(data),
             dataType:"json",
@@ -41,6 +41,5 @@ layui.use(['table','form'],function () {
             }
         });
     })
-
 
 })

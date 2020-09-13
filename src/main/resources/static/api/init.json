@@ -119,7 +119,7 @@
           "child": [
             {
               "title": "发票管理",
-              "href": "page/bill-manage.html",
+              "href": "page/bill.html",
               "icon": "fa fa-money",
               "target": "_self"
             },

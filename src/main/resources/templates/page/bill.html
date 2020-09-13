@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发票管理</title>
+    <link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
+    <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.all.js"></script>
+</head>
+<body>
+<script id="billToolBar" type="text/html">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm data-add-btn" lay-event="add">新增发票</button>
+    </div>
+</script>
+<fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+    <legend>发票管理</legend>
+    <table id="billTable" lay-filter="billTableFilter"></table>
+</fieldset>
+<script id="billOptionTool" type="text/html">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+</script>
+</body>
+</html>
