@@ -3,14 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>发票管理</title>
+    <link href="/static/lib/layui-v2.5.5/css/modules/laydate/default/laydate.css" media="all" rel="stylesheet">
     <link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
     <link href="/static/css/public.css" media="all" rel="stylesheet">
+    <script charset="utf-8" src="/static/lib/layui-v2.5.5/lay/modules/laydate.js"></script>
     <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
 </head>
 <body class="layuimini-container">
     <div class="layuimini-main">
         <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
             <legend>发票管理</legend>
+
+            <div class="layui-form layuimini-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">客户编码</label>
+                        <div class="layui-input-inline">
+                            <input autocomplete="off" class="layui-input" id="custId" name="custId" type="text">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">客户名称</label>
+                        <div class="layui-input-inline">
+                            <input autocomplete="off" class="layui-input" id="custName" name="custName" type="text">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label"r>任务编码</label>
+                        <div class="layui-input-inline">
+                            <input autocomplete="off" class="layui-input" id="taskId" name="taskId" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"r>任务名称</label>
+                        <div class="layui-input-inline">
+                            <input autocomplete="off" class="layui-input" id="taskName" name="taskName" type="text">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">发布时间</label>
+                        <div class="layui-input-inline">
+                            <input autocomplete="off" class="layui-input" id="startDate" name="startDate" type="text"
+                                placeholder="起始日期">
+                        </div>
+                        <div class="layui-input-inline">
+                            <input autocomplete="off" class="layui-input" id="endDate" name="endDate" type="text"
+                                placeholder="截止日期">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn" lay-submit lay-filter="queryBillInfoFilter">查询</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+
+            </div>
             <table id="billTable" lay-filter="billTableFilter"></table>
         </fieldset>
         <script id="billToolBar" type="text/html">
@@ -24,5 +75,5 @@
         </script>
     </div>
 </body>
-<script src="../../static/js/page/bill.js?v=1.1.3" charset="UTF-8"></script>
+<script src="../../static/js/page/bill.js?v=1.1.7" charset="UTF-8"></script>
 </html>

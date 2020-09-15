@@ -2,55 +2,89 @@ layui.use(['table','form'],function () {
     var $ = layui.jquery
     table = layui.table;
     form = layui.form;
-    table.render({
-        elem: '#billTable',
-        url: '/bill/list',
-        method: 'post',
-        toolbar: '#billToolBar',
-        defaultToolbar: [],
-        //处理返回参数
-        parseData: function (res) {
-            return {
-                "code": res.code,
-                "msg": res.msg,
-                "count": res.data.total,
-                "data": res.data.list
-            };
-        },
-        //设置返回的属性值，依据此值进行解析
-        response: {
-            statusName: 'code',
-            statusCode: "0000",
-            msgName: 'msg',
-            dataName: 'data'
-        },
-        cols: [[
-            {field: 'billId', title: '系统编号'},
-            {field: 'billCode', title: '发票编码'},
-            {field: 'custId', title: '客户编号'},
-            {field: 'custName', title: '客户名称'},
-            {field: 'taskId', title: '任务编号'},
-            {field: 'taskName', title: '任务名称',},
-            {field: 'taskAmount', title: '任务金额',},
-            {field: 'billStatus', title: '开票状态'},
-            {field: 'billAmount', title: '开票金额'},
-            {field: 'deliveryStatus', title: '寄送状态'},
-            {field: 'createTime', title: '创建时间', sort: true},
-            {field: 'updateTime', title: '更新时间'},
-            {field: 'optUser', title: '最后更新操作人'},
-            {title: '操作', minWidth: 150, toolbar: '#billOptionTool', align: "center"}
-        ]],
-        limits: [10, 15, 20, 25, 50, 100],
-        limit: 15,
-        page: true
-        // done: function (res, curr, count) {
-        //     $("[data-field='status']").children().each(function () {
-        //         if($(this).text()=='1')
-        //             $(this).text = "正常";
-        //         if($(this).text()=='0')
-        //             $(this).text = "注销";
-        //     })
-        // }
+    var billQuery = function (data) {
+        table.render({
+            elem: '#billTable',
+            url: '/bill/list',
+            method: 'post',
+            contentType: "application/json;charset=UTF-8",
+            where: data,
+            toolbar: '#billToolBar',
+            defaultToolbar: [],
+            //处理返回参数
+            parseData: function (res) {
+                return {
+                    "code": res.code,
+                    "msg": res.msg,
+                    "count": res.data.total,
+                    "data": res.data.list
+                };
+            },
+            //设置返回的属性值，依据此值进行解析
+            response: {
+                statusName: 'code',
+                statusCode: "0000",
+                msgName: 'msg',
+                dataName: 'data'
+            },
+            cols: [[
+                {field: 'billId', title: '系统编号'},
+                {field: 'billCode', title: '发票编码'},
+                {field: 'custId', title: '客户编号'},
+                {field: 'custName', title: '客户名称'},
+                {field: 'taskId', title: '任务编号'},
+                {field: 'taskName', title: '任务名称',},
+                {field: 'taskAmount', title: '任务金额',},
+                {field: 'billStatus', title: '开票状态'},
+                {field: 'billAmount', title: '开票金额'},
+                {field: 'deliveryStatus', title: '寄送状态'},
+                {field: 'createTime', title: '创建时间', sort: true},
+                {field: 'updateTime', title: '更新时间'},
+                {field: 'optUser', title: '最后更新操作人'},
+                {title: '操作', minWidth: 150, toolbar: '#billOptionTool', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            done: function (res, curr, count) {
+                $("[data-field='billStatus']").children().each(function () {
+                    switch ($(this).text()) {
+                        case '0':
+                            $(this).text("待开票");
+                            break;
+                        case '1':
+                            $(this).text("已开票");
+                            break;
+                        case '2':
+                            $(this).text("开票中");
+                            break;
+                        case '3':
+                            $(this).text("已注销");
+                            break;
+                    }
+                });
+
+                $("[data-field='deliveryStatus']").children().each(function () {
+                    switch ($(this).text()) {
+                        case '0':
+                            $(this).text("未寄送");
+                            break;
+                        case '1':
+                            $(this).text("已寄送");
+                            break;
+                    }
+                });
+            }
+        });
+    }
+
+    billQuery();
+
+    laydate.render({
+        elem: '#startDate'
+    });
+    laydate.render({
+        elem: '#endDate'
     });
 
     table.on('toolbar(billTableFilter)',function (obj) {
@@ -80,6 +114,11 @@ layui.use(['table','form'],function () {
             });
         }
     })
+
+    form.on('submit(queryBillInfoFilter)',function (data) {
+        data = data.field;
+        billQuery(data);
+    });
 
     table.on('tool(billTableFilter)', function (lineObj) {
         var data = lineObj.data;
@@ -128,11 +167,11 @@ layui.use(['table','form'],function () {
             var btnName = $(this).html();
             var status = 1;
             if (btnName=='撤销')
-                status = 0;
+                status = 3;
             var index = layer.confirm("确认"+btnName+"吗？",function () {
                 var obj = {};
-                obj.billID = lineObj.data.billID;
-                obj.status = status;
+                obj.billId = lineObj.data.billId;
+                obj.billStatus = status;
                 $.ajax({
                     url:'/bill/edit',
                     type:'post',

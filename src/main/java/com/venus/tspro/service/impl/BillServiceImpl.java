@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -17,8 +18,8 @@ public class BillServiceImpl implements BillService {
     @Resource
     BillDao billDao;
     @Override
-    public List<BillInfo> queryAllBills() {
-        return billDao.queryAllBills();
+    public List<BillInfo> queryAllBills(Map<String,String> billInfoMap) {
+        return billDao.queryAllBills(billInfoMap);
     }
 
     @Override

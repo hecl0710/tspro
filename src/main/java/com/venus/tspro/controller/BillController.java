@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * 发票管理请求处理类
@@ -23,8 +24,8 @@ public class BillController {
     BillService billService;
 
     @PostMapping("list")
-    public PageVO<BillInfo> queryAllBills(){
-        return PageVOUtil.convert(new PageInfo<>(billService.queryAllBills()));
+    public PageVO<BillInfo> queryAllBills(@RequestBody Map<String,String> billInfoMap){
+        return PageVOUtil.convert(new PageInfo<>(billService.queryAllBills(billInfoMap)));
     }
 
     @PostMapping("add")

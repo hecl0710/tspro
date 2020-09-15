@@ -24,8 +24,17 @@
             CREATE_TIME,UPDATE_TIME,OPT_USER)
     </sql>
 
-    <select id="queryAllBills"  resultMap="billResultMap">
+    <select id="queryAllBills" parameterType="map"  resultMap="billResultMap">
         SELECT * FROM T_BILL_INFO T
+        <where>
+            <if test="custId!=null and custId!=''">T.CUST_ID = #{custId}</if>
+            <if test="custName!=null and custName!=''"> And T.CUST_NAME LIKE '%${custName}%'</if>
+            <if test="taskId!=null and taskId!=''"> AND T.TASK_ID = #{taskId}</if>
+            <if test="taskName!=null and taskName!=''">AND T.TASK_NAME = #{taskName}</if>
+            <if test="startDate!=null and startDate!=''">AND T.CREATE_TIME >= #{startDate}</if>
+            <if test="endDate!=null and endDate!=''">AND T.CREATE_TIME &lt;= #{endDate}</if>
+
+        </where>
     </select>
 
     <insert id="saveNewBill" parameterType="BillInfo">
