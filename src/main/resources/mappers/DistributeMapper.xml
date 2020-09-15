@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.venus.tspro.dao.DistributeDao">
+
+
+    <resultMap id="distributeOrderResultMap" type="com.venus.tspro.entity.Distribute">
+        <id column="CUST_ID" property="custId"/>
+        <result column="EMP_ID" property="empId"/>
+        <result column="TS_ID" property="tsId"/>
+        <result column="CHANNEL_ID" property="channelId"/>
+        <result column="ACCOUNT_NO" property="accountNo"/>
+        <result column="ACCOUNT_NAME" property="accountName"/>
+        <result column="AMOUNT" property="amount"/>
+        <result column="SETT_DATE" property="settDate"/>
+        <result column="STATUS" property="status"/>
+        <result column="CREATE_TIME" property="creatTime"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+
+        <result column="EMP_NAME" property="empName"/>
+        <result column="DOCUMENT_TYPE" property="documentType"/>
+        <result column="IDENTIFY_ID" property="identifyId"/>
+        <result column="PHONE" property="phone"/>
+    </resultMap>
+    <select id="getDistributeData" parameterType="Distribute" resultMap="distributeOrderResultMap">
+        SELECT orderinfo.*,employeeInfo.EMP_NAME,
+        '身份证' DOCUMENT_TYPE, employeeInfo.IDENTIFY_ID,employeeInfo.PHONE
+        FROM T_SETT_ORDER orderinfo
+        LEFT JOIN T_EMPLOYEE_INFO employeeInfo
+        ON orderinfo.emp_id = employeeInfo.Emp_Id AND orderinfo.cust_id = employeeInfo.Cust_Id
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="empName != '' and empName != null">
+                AND employeeInfo.EMP_NAME LIKE '%' || #{empName} || '%'
+            </if>
+            <if test="phone != '' and phone != null">
+                AND employeeInfo.PHONE LIKE '%' || #{phone} || '%'
+            </if>
+            <if test="identifyId != '' and identifyId != null">
+                AND employeeInfo.IDENTIFY_ID LIKE '%' || #{phone} || '%'
+            </if>
+            <if test="creatTime != '' and creatTime != null">
+                AND orderinfo.CREATE_TIME =#{creatTime}
+            </if>
+            <if test="accountNo != '' and accountNo != null">
+                AND ACCOUNT_NO LIKE '%' || #{accountNo} || '%'
+            </if>
+            <if test="status != '' and status != null">
+                AND orderinfo.status =#{status}
+            </if>
+        </trim>
+        ORDER BY orderinfo.UPDATE_TIME DESC
+    </select>
+
+</mapper>

@@ -16,60 +16,59 @@
 
     <fieldset class="table-search-fieldset">
         <legend>结算查询</legend>
-        <div style="margin: 10px 10px 10px 10px">
-            <form action="" class="layui-form layui-form-pane">
-                <div class="layui-form-item">
+        <div class="layui-form layuimini-form" style="margin: 10px 10px 10px 10px">
+            <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">收款人</label>
                         <div class="layui-input-inline">
-                            <input autocomplete="off" class="layui-input" type="text">
+                            <input autocomplete="off" class="layui-input" id="empName" name="empName" type="text">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">手机号码</label>
                         <div class="layui-input-inline">
-                            <input autocomplete="off" class="layui-input" type="text">
+                            <input autocomplete="off" class="layui-input" id="phone" name="phone" type="text">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">证件号码</label>
                         <div class="layui-input-inline">
-                            <input autocomplete="off" class="layui-input" type="text">
+                            <input autocomplete="off" class="layui-input" id="identifyId" name="identifyId" type="text">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">发起时间</label>
                         <div class="layui-input-inline">
-                            <input autocomplete="off" class="layui-input" id="test5" name="test5"
+                            <input autocomplete="off" class="layui-input" id="creatTime" name="creatTime"
                                    placeholder="yyyy-MM-dd HH:mm:ss" type="text">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">银行卡号</label>
                         <div class="layui-input-inline">
-                            <input autocomplete="off" class="layui-input" type="text">
+                            <input autocomplete="off" class="layui-input" id="accountNo" name="accountNo" type="text">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">打款状态</label>
                         <div class="layui-input-inline">
-                            <select lay-filter="aihao" name="interest">
+                            <select id="status" lay-filter="aihao" name="status">>
                                 <option value=""></option>
-                                <option value="0">打款成功</option>
-                                <option value="1">打款异常</option>
+                                <option value="1">打款成功</option>
+                                <option value="3">打款异常</option>
                             </select>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <button class="layui-btn layui-btn-primary" lay-filter="data-search-btn" lay-submit
+                        <button class="layui-btn layui-btn-primary" lay-filter="queryDistributeOrderFilter" lay-submit
                                 type="submit"><i class="layui-icon"></i> 查询
                         </button>
-                        <button class="layui-btn layui-btn-primary" lay-filter="data-search-btn" lay-submit
+                        <button class="layui-btn layui-btn-primary" id="clearDistributeOrderBtn"
+                                lay-filter="clearDistributeOrderFilter" lay-submit
                                 type="submit"><i class="layui-icon"></i> 重置
                         </button>
                     </div>
                 </div>
-            </form>
         </div>
     </fieldset>
 
