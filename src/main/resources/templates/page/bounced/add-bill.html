@@ -8,10 +8,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
     <link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
     <link href="/static/css/public.css" media="all" rel="stylesheet">
-    <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.all.js"></script>
-<!--    <script charset="utf-8" src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>-->
-<!--    <script charset="utf-8" src="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.js"></script>-->
-<!--    <link href="/static/lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all" rel="stylesheet">-->
+    <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
     <style>
         body {
             background-color: #ffffff;
@@ -33,7 +30,7 @@
     </style>
 </head>
 <body>
-<div class="layui-form layuimini-form">
+<div id="billForm" class="layui-form layuimini-form">
     <div class="layui-form-item" hidden="hidden">
         <div class="layui-input-block">
             <input class="layui-input" id="billId" name="billId" type="text" value="">
@@ -71,9 +68,24 @@
         </div>
     </div>
     <div class="layui-form-item">
+        <label class="layui-form-label">开票状态</label>
+        <div class="layui-input-block">
+            <select name="billStatus" id="billStatus" lay-verify="required">
+                <option value=""></option>
+                <option value="0">未开票</option>
+                <option value="1">已开票</option>
+                <option value="2">开票中</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
         <label class="layui-form-label">寄送状态</label>
         <div class="layui-input-block">
-            <input class="layui-input" id="deliveryStatus" name="deliveryStatus" type="text" value="">
+            <select id="deliveryStatus" name="deliveryStatus" lay-verify="required">
+                <option value=""></option>
+                <option value="0">未寄送</option>
+                <option value="1">已寄送</option>
+            </select>
         </div>
     </div>
     <div class="layui-form-item">
@@ -85,12 +97,12 @@
 
     <div class="layui-form-item" hidden="hidden">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit id="addBillBtn" lay-filter="addBillFilter">提交</button>
+            <button class="layui-btn" lay-submit id="addBillBtn" lay-filter="addBillFilter">增加</button>
             <button class="layui-btn" lay-submit id="editBillBtn" lay-filter="editBillFilter">编辑</button>
         </div>
     </div>
 
 </div>
-<script src="/static/js/page/tax-company-manage.js?v=1.0.8" type="text/javascript"></script>
+<script src="/static/js/page/bill-manage.js?v=1.0.8" type="text/javascript"></script>
 </body>
 </html>

@@ -38,7 +38,7 @@ layui.use(['table','form'],function () {
             {field: 'createTime', title: '创建时间', sort: true},
             {field: 'updateTime', title: '更新时间'},
             {field: 'optUser', title: '最后更新操作人'},
-            {title: '操作', minWidth: 150, toolbar: '#tscOptionTool', align: "center"}
+            {title: '操作', minWidth: 150, toolbar: '#billOptionTool', align: "center"}
         ]],
         limits: [10, 15, 20, 25, 50, 100],
         limit: 15,
@@ -79,5 +79,80 @@ layui.use(['table','form'],function () {
                 layer.full(index);
             });
         }
+    })
+
+    table.on('tool(billTableFilter)', function (lineObj) {
+        var data = lineObj.data;
+        if (lineObj.event === 'edit') {
+            var index = parent.layer.open({
+                title: '编辑发票',
+                type: 2,
+                shade: 0.2,
+                maxmin: true,
+                shadeClose: true,
+                area: ['50%', '80%'],
+                content: '/page/bounced/add-bill.html',
+                btn: ['关闭', '确认'],
+                success: function(layero,index){
+                    var billBody = parent.layer.getChildFrame('body', index);
+                    var iframeWin = $("div.layui-layer-content > iframe", layero)[0].contentWindow;
+                    var editForm = iframeWin.layui.form;
+                    billBody.find("#billId").val(data.billId);
+                    billBody.find("#billCode").val(data.billCode);
+                    billBody.find("#custName").val(data.custName);
+                    billBody.find("#taskName").val(data.taskName);
+                    billBody.find("#taskAmount").val(data.taskAmount);
+                    billBody.find("#billAmount").val(data.billAmount);
+                    billBody.find("#billStatus").val(data.billStatus);
+                    billBody.find("#deliveryStatus").val(data.deliveryStatus);
+                    billBody.find("#deliveryCode").val(data.deliveryCode);
+                    editForm.render();
+                },
+                btn1: function (index,layero) {
+                    parent.layer.close(index);
+                },
+                btn2: function (index,layero) {
+                    parent.layer.getChildFrame('body', index).find('#editBillBtn').click();
+                    return false;
+                },
+                end: function () {
+                    window.location.reload();
+                }
+            });
+            $(window).on("resize", function () {
+                layer.full(index);
+            });
+        }
+
+        if (lineObj.event == 'forbidden'){
+            var btnName = $(this).html();
+            var status = 1;
+            if (btnName=='撤销')
+                status = 0;
+            var index = layer.confirm("确认"+btnName+"吗？",function () {
+                var obj = {};
+                obj.billID = lineObj.data.billID;
+                obj.status = status;
+                $.ajax({
+                    url:'/bill/edit',
+                    type:'post',
+                    data:JSON.stringify(obj),
+                    contentType:'application/json',
+                    success:function (data) {
+                        if (data.code=="0000"){
+                            layer.alert(btnName+"成功",function () {
+                                layer.close(index);
+                                window.location.reload();
+                            });
+                        } else {
+                            layer.alert(btnName+"失败："+data.msg);
+                        }
+
+                    }
+
+                })
+            })
+        }
+
     })
 })

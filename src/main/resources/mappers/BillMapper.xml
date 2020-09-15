@@ -29,7 +29,7 @@
     </select>
 
     <insert id="saveNewBill" parameterType="BillInfo">
-        INSERT INTO T_TS_PLATFORM_INFO <include refid="insertTaxCompanySql"></include> VALUES (
+        INSERT INTO T_BILL_INFO <include refid="insertTaxCompanySql"></include> VALUES (
             #{billId},#{billCode},#{custId,jdbcType=VARCHAR},#{custName,jdbcType=VARCHAR},#{taskId,jdbcType=VARCHAR},
             #{taskName},#{taskAmount,jdbcType=VARCHAR},#{billStatus,jdbcType=VARCHAR},#{billAmount,jdbcType=VARCHAR},#{deliveryStatus},#{deliveryCode},
             TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),
@@ -37,26 +37,35 @@
         )
     </insert>
 
-<!--    <update id="updateTaxCompany" parameterType="TaxCompany">-->
-<!--        UPDATE T_TS_PLATFORM_INFO T-->
-<!--        <set>-->
-<!--            <if test="companyName!='' and companyName!=null">-->
-<!--                T.COMPANY_NAME = #{companyName},-->
-<!--            </if>-->
-<!--            <if test="businessLicence!='' and businessLicence!=null">-->
-<!--                T.BUSINESS_LICENCE = #{businessLicence},-->
-<!--            </if>-->
-<!--            <if test="legalName!='' and legalName!=null">-->
-<!--                T.LEGAL_NAME = #{legalName},-->
-<!--            </if>-->
-<!--            <if test="legalId!='' and legalId!=null">-->
-<!--                T.LEGAL_ID = #{legalId},-->
-<!--            </if>-->
-<!--            <if test="status!='' and status!=null">-->
-<!--                T.STATUS = #{status},-->
-<!--            </if>-->
-<!--            T.UPDATE_TIME = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')-->
-<!--        </set>-->
-<!--        WHERE T.COMPANY_ID = #{companyId}-->
-<!--    </update>-->
+    <update id="updateBill" parameterType="BillInfo">
+        UPDATE T_BILL_INFO T
+        <set>
+            <if test="custName!='' and custName!=null">
+                T.CUST_NAME = #{custName},
+            </if>
+            <if test="billCode!='' and billCode!=null">
+                T.BILL_CODE = #{billCode},
+            </if>
+            <if test="taskName!='' and taskName!=null">
+                T.TASK_NAME = #{taskName},
+            </if>
+            <if test="taskAmount!='' and taskAmount!=null">
+                T.TASK_AMOUNT = #{taskAmount},
+            </if>
+            <if test="billStatus!='' and billStatus!=null">
+                T.BILL_STATUS = #{billStatus},
+            </if>
+            <if test="billAmount!='' and billAmount!=null">
+                T.BILL_AMOUNT = #{billAmount},
+            </if>
+            <if test="deliveryStatus!='' and deliveryStatus!=null">
+                T.DELIVERY_STATUS = #{deliveryStatus},
+            </if>
+            <if test="deliveryCode!='' and deliveryCode!=null">
+                T.DELIVERY_CODE = #{deliveryCode},
+            </if>
+            T.UPDATE_TIME = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')
+        </set>
+        WHERE T.BILL_ID = #{billId}
+    </update>
 </mapper>

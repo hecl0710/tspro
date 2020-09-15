@@ -7,4 +7,5 @@ import java.util.List;
 public interface BillDao {
     List<BillInfo> queryAllBills();
     void saveNewBill(BillInfo billInfo);
+    void updateBill(BillInfo billInfo);
 }

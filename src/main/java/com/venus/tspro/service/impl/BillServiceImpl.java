@@ -1,5 +1,6 @@
 package com.venus.tspro.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.venus.tspro.dao.BillDao;
 import com.venus.tspro.entity.BillInfo;
 import com.venus.tspro.service.BillService;
@@ -22,7 +23,14 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public void addNewBill(BillInfo billInfo) {
+        log.info("接收到新增发票请求：{}", JSON.toJSONString(billInfo));
         billInfo.setBillId(SeqBuilder.buildBillId());
         billDao.saveNewBill(billInfo);
+    }
+
+    @Override
+    public void editBill(BillInfo billInfo) {
+        log.info("接收到编辑发票请求：{}", JSON.toJSONString(billInfo));
+        billDao.updateBill(billInfo);
     }
 }

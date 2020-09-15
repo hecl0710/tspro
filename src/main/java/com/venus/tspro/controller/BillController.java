@@ -26,6 +26,11 @@ public class BillController {
 
     @PostMapping("add")
     public void addNewBill(@RequestBody BillInfo billInfo){
+        billService.addNewBill(billInfo);
+    }
 
+    @PostMapping("edit")
+    public void editBill(@RequestBody BillInfo billInfo){
+        billService.editBill(billInfo);
     }
 }

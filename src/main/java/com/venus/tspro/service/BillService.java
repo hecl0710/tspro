@@ -7,4 +7,5 @@ import java.util.List;
 public interface BillService {
     List<BillInfo> queryAllBills();
     void addNewBill(BillInfo billInfo);
+    void editBill(BillInfo billInfo);
 }
