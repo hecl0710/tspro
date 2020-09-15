@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+/**
+ * 发票管理请求处理类
+ */
 @RestController
 @RequestMapping("bill")
 public class BillController {

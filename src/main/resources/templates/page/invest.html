@@ -11,19 +11,16 @@
 <body class="layuimini-container">
 <div class="layuimini-main">
 
-    <fieldset class="table-search-fieldset">
-        <div style="margin: 10px 10px 10px 10px">
-            <h3>充值管理</h3>
-        </div>
+    <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+        <legend>充值管理</legend>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
     </fieldset>
 
     <script id="toolbarDemo" type="text/html">
         <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">提交充值信息</button>
+            <button class="layui-btn layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon">&#xe608;</i>新增充值订单</button>
         </div>
     </script>
-
-    <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
     <script id="currentTableBar" type="text/html">
         <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>

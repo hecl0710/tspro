@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <title>税源企业管理</title>
     <link href="/static/lib/layui-v2.5.5/css/layui.css" media="all" rel="stylesheet">
+    <link href="/static/css/public.css" media="all" rel="stylesheet">
     <script charset="utf-8" src="/static/lib/layui-v2.5.5/layui.js"></script>
 </head>
-<body>
-<script id="tscToolBar" type="text/html">
-    <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon">&#xe608;</i>新增税源企业</button>
+<body class="layuimini-container">
+    <div class="layuimini-main">
+        <script id="tscToolBar" type="text/html">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon">&#xe608;</i>新增税源企业</button>
+            </div>
+        </script>
+        <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+            <legend>税源企业</legend>
+            <table id="tscTable" lay-filter="tscTableFilter"></table>
+        </fieldset>
+        <script id="tscOptionTool" type="text/html">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            {{# if(d.status == "1"){ }}
+            <a class="layui-btn layui-btn-xs layui-btn-danger forbiddenBtn" lay-event="forbidden">禁用</a>
+            {{# } else { }}
+            <a class="layui-btn layui-btn-xs layui-btn-danger forbiddenBtn" lay-event="forbidden">启用</a>
+            {{# } }}
+        </script>
     </div>
-</script>
-<fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
-    <legend>税源企业</legend>
-    <table id="tscTable" lay-filter="tscTableFilter"></table>
-</fieldset>
-<script id="tscOptionTool" type="text/html">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-<!--    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">注销</a>-->
-    {{# if(d.status == "1"){ }}
-    <a class="layui-btn layui-btn-xs layui-btn-danger forbiddenBtn" lay-event="forbidden">禁用</a>
-    {{# } else { }}
-    <a class="layui-btn layui-btn-xs layui-btn-danger forbiddenBtn" lay-event="forbidden">启用</a>
-    {{# } }}
-</script>
 </body>
 <script src="../../static/js/page/tax-company.js?v=1.1.3" charset="UTF-8"></script>
 </html>

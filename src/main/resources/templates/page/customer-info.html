@@ -36,18 +36,17 @@
                 </div>
             </div>
         </div>
+        <table class="layui-hide" id="customerTable" lay-filter="customerTableFilter"></table>
     </fieldset>
 
     <script id="customerToolbar" type="text/html">
         <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">新建客户信息</button>
+            <button class="layui-btn layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon">&#xe608;</i>新建客户信息</button>
         </div>
     </script>
 
-    <table class="layui-hide" id="customerTable" lay-filter="customerTableFilter"></table>
-
     <script id="customerTableBar" type="text/html">
-        <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="editCustomer">修改</a>
+        <a class="layui-btn layui-btn-xs data-count-edit" lay-event="editCustomer">修改</a>
         <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="deleteCustomer">删除</a>
     </script>
 </div>

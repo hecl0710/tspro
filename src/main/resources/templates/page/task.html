@@ -11,22 +11,19 @@
 <body class="layuimini-container">
 <div class="layuimini-main">
 
-    <fieldset class="table-search-fieldset">
-        <div style="margin: 10px 10px 10px 10px">
-            <h3>任务广场</h3>
-        </div>
+    <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+        <legend>任务管理</legend>
+        <table class="layui-hide" id="taskTable" lay-filter="taskTableFilter"></table>
     </fieldset>
 
     <script id="taskToolbar" type="text/html">
         <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add">新建任务</button>
+            <button class="layui-btn layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon">&#xe608;</i>新建任务</button>
         </div>
     </script>
 
-    <table class="layui-hide" id="taskTable" lay-filter="taskTableFilter"></table>
-
     <script id="taskTableBar" type="text/html">
-        <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
     </script>
 </div>
 </body>
