@@ -120,6 +120,16 @@ layui.use(['table','form'],function () {
         billQuery(data);
     });
 
+    $("#resetBillFormBtn").on('click',function () {
+        $("#custId").val("");
+        $("#custName").val("");
+        $("#taskId").val("");
+        $("#taskName").val("");
+        $("#startDate").val("");
+        $("#endDate").val("");
+        form.render();
+    })
+
     table.on('tool(billTableFilter)', function (lineObj) {
         var data = lineObj.data;
         if (lineObj.event === 'edit') {
